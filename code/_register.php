@@ -4,15 +4,17 @@ include "_server.php";
 
 $conn = mysqli_connect($servername, $user, $pass, $database);
 
- $name = $_POST['name'];
+ $businessName = $_POST['name'];
  $email = $_POST['email'];
- $logo = $_POST['logo'];
- $direccion = $_POST['direccion'];
- $telefono = $_POST['telefono'];
- $whats = $_POST['whats'];
+ $businesSLogo = $_POST['logo'];
+ $address = $_POST['address'];
+ $phone = $_POST['direccion'];
+ $whatsApp = $_POST['telefono'];
+ $line = $_POST['whats'];
+ $googleLink = $_POST['googleLink'];
 
  
-$query = "INSERT INTO NEGOCIOS (negocio, email, logo, direccion, telefono, whats) 
+$query = "INSERT INTO NEGOCIOS (businessName, email, businesslogo, address, phone, whatsApp, line, googleLink) 
 VALUES ('$name', '$email', '$logo', '$direccion', '$telefono', '$whats')";
 
 if($conn->query($query)==TRUE){
