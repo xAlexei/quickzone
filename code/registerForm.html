@@ -72,19 +72,17 @@
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <!-- Cargar archivos -->
-                <div class="card card-style">
-                    <div class="content mb-0">
-                        <h2 style="text-align: center;">Carga tu logo en PNG</h2>
-                        <div class="file-data pb-5">
-                            <input type="file" id="file-upload" name="logo" class="upload-file bg-orange-light shadow-s rounded-s " multiple>
-                            <p class="upload-file-text color-white">Upload Image</p>
-                        </div>
-                    </div>
+                <!-- Link de imagen  -->
+                <div class="input-style has-borders no-icon validate-field mb-4">
+                    <input type="text" class="form-control validate-text" name="logo" id="logo" placeholder="Link de imagen">
+                    <label for="form2" class="color-highlight">Business Logo</label>
+                    <i class="fa fa-times disabled invalid color-red-dark"></i>
+                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                    <em>(required)</em>
                 </div>
                 <!--  Direccion -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="direccion" id="direccion" placeholder="Direccion">
+                    <input type="text" class="form-control validate-text" name="address" id="address" placeholder="Direccion">
                     <label for="form3" class="color-highlight">Direccion</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -93,10 +91,28 @@
                 <!-- Telefono y Whatsapp  -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
                    <div class="input-group">
-                       <input type="tel" class="form-control validate-text" name="telefono" id="telefono" placeholder="Telefono">
+                       <input type="tel" class="form-control validate-text" name="phone" id="phone" placeholder="Telefono">
                        <input type="tel" class="form-control validate-text" name="whats" id="whats" placeholder="WhatsApp">
                        <em>(required)</em>
                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="input-style input-style-always-active has-borders no-icon mb-4">
+                        <label for="form51" class="color-highlight"></label>
+                        <select id="line" name="line">
+                            <option value="default">Selecciona una opcion</option>
+                            <option value="Prodcucto">Producto</option>
+                            <option value="Servicio">Servicio</option>
+                        </select>
+                        <span><i class="fa fa-chevron-down"></i></span>
+                    </div>
+                </div>
+                <div class="input-style has-borders no-icon validate-field mb-4">
+                    <input type="text" class="form-control validate-text" name="googleLink" id="googleLink" placeholder="Ubicacion de google">
+                    <label for="form3" class="color-highlight">Google Link</label>
+                    <i class="fa fa-times disabled invalid color-red-dark"></i>
+                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                    <em>(required)</em>
                 </div>
                 <input style="width: 100%;" type="submit" placeholder="Guardar" class="btn btn-m btn-full mb-3 rounded-xs text-uppercase font-700 shadow-s bg-orange-light">
                 </form>

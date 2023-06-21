@@ -6,16 +6,16 @@ $conn = mysqli_connect($servername, $user, $pass, $database);
 
  $businessName = $_POST['name'];
  $email = $_POST['email'];
- $businesSLogo = $_POST['logo'];
+ $businessLogo = $_POST['logo'];
  $address = $_POST['address'];
- $phone = $_POST['direccion'];
- $whatsApp = $_POST['telefono'];
- $line = $_POST['whats'];
+ $phone = $_POST['phone'];
+ $whatsApp = $_POST['whats'];
+ $line = $_POST['line'];
  $googleLink = $_POST['googleLink'];
 
  
-$query = "INSERT INTO NEGOCIOS (businessName, email, businesslogo, address, phone, whatsApp, line, googleLink) 
-VALUES ('$name', '$email', '$logo', '$direccion', '$telefono', '$whats')";
+$query = "INSERT INTO business (businessName, email, businesslogo, address, phone, whatsApp, line, googleLink) 
+VALUES ('$businessName', '$email', '$businessLogo', '$address', '$phone', '$whatsApp', '$line', '$googleLink')";
 
 if($conn->query($query)==TRUE){
     echo "<script>
