@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<title>AppKit BootStrap</title>
+<title>Panel Administrador</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -66,7 +66,6 @@
                 <p>
                     Administre de manera rapida los negocios registrados
                 </p>
-                <!--  Productos   -->
     <?php 
     include "_server.php";
     $conn = mysqli_connect($servername, $user, $pass, $database);
@@ -90,17 +89,12 @@
         </div>
     </div>";
     }
-
-    
-
   mysqli_close($conn);
 
       ?>
 
     </div>
         </div>
-
-
     </div>
     <!-- End of Page Content-->
     <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->

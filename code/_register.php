@@ -18,10 +18,15 @@ $query = "INSERT INTO business (businessName, email, businesslogo, address, phon
 VALUES ('$businessName', '$email', '$businessLogo', '$address', '$phone', '$whatsApp', '$line', '$googleLink')";
 
 if($conn->query($query)==TRUE){
-    echo "<script>
-    alert('Insertado correctamente')
-    window.location.replace('registerForm.html');
-    </script>";
+    echo "
+    Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+      )
+      </script>
+    ";
+    
 }else{
     echo "Error: ";
 }

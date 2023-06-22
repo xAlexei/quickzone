@@ -1,9 +1,5 @@
 <?php
 
-class BD {
-    
-}
-
 $servername = "localhost";
 $database = "quickzone";
 $user = "quickzone";

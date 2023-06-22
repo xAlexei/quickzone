@@ -1,0 +1,42 @@
+CREATE TABLE business (
+    _id INT AUTO_INCREMENT, 
+    businessName VARCHAR (55),
+    email VARCHAR (55),
+    businessLogo VARCHAR (255),
+    businessAddress VARCHAR (55),
+    phone VARCHAR (16),
+    whatsApp VARCHAR (12),
+    typeOf VARCHAR (55),
+    googleLink VARCHAR (255),
+    PRIMARY KEY (customerID)
+)
+
+CREATE TABLE businessAccess (
+    userID int AUTO_INCREMENT
+    username VARCHAR (55),
+    pass VARCHAR (55),
+    typeOfUser VARCHAR (16),
+    PRIMARY KEY (userID),
+    FOREIGN KEY (username) REFERENCES business (businessName)
+)
+
+CREATE TABLE businessProducts(
+    businessID INT AUTO_INCREMENT,
+    nameID VARCHAR (55),
+    productName VARCHAR (55),
+    price VARCHAR (55),
+    descript VARCHAR (255),
+    feeback VARCHAR (255),
+    /*tiktok VARCHAR (55)*/
+    PRIMARY KEY (businessID)
+    FOREIGN KEY (nameID) REFERENCES business (businessName)
+)
+
+CREATE TABLE businessServices(
+    serviceID int AUTO_INCREMENT,
+    servicesAddress VARCHAR (100),
+    phoneID VARCHAR (16),
+    priceOf VARCHAR (55),
+    PRIMARY KEY (serviceID),
+    FOREIGN KEY (servicesAddress) REFERENCES business (businessAddress)
+)
