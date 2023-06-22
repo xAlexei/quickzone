@@ -14,19 +14,14 @@ $conn = mysqli_connect($servername, $user, $pass, $database);
  $googleLink = $_POST['googleLink'];
 
  
-$query = "INSERT INTO business (businessName, email, businesslogo, address, phone, whatsApp, line, googleLink) 
+$query = "INSERT INTO business (businessName, email, businesslogo, businessAddress, phone, whatsApp, typeOf, googleLink) 
 VALUES ('$businessName', '$email', '$businessLogo', '$address', '$phone', '$whatsApp', '$line', '$googleLink')";
 
 if($conn->query($query)==TRUE){
-    echo "
-    Swal.fire(
-        'Good job!',
-        'You clicked the button!',
-        'success'
-      )
-      </script>
-    ";
-    
+    echo "<script>
+    alert('Insertado correctamente')
+    window.location.replace('_registerForm.html');
+    </script>";
 }else{
     echo "Error: ";
 }

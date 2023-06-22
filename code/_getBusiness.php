@@ -80,7 +80,7 @@
         </div>
         <div class='align-self-center'>
             <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['address']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
             <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
 
         </div>

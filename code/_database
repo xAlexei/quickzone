@@ -1,3 +1,5 @@
+CREATE DATABASE quickzone
+
 CREATE TABLE business (
     _id INT AUTO_INCREMENT, 
     businessName VARCHAR (55),
@@ -8,35 +10,45 @@ CREATE TABLE business (
     whatsApp VARCHAR (12),
     typeOf VARCHAR (55),
     googleLink VARCHAR (255),
-    PRIMARY KEY (customerID)
+    PRIMARY KEY (_id)
 )
 
-CREATE TABLE businessAccess (
-    userID int AUTO_INCREMENT
-    username VARCHAR (55),
+CREATE TABLE users (
+    userID int AUTO_INCREMENT,
+    businessID int, 
+    username VARCHAR (60),
     pass VARCHAR (55),
     typeOfUser VARCHAR (16),
     PRIMARY KEY (userID),
-    FOREIGN KEY (username) REFERENCES business (businessName)
+    FOREIGN KEY (businessID) REFERENCES business (_id)
 )
 
 CREATE TABLE businessProducts(
     businessID INT AUTO_INCREMENT,
-    nameID VARCHAR (55),
+    businessNameID INT,
     productName VARCHAR (55),
     price VARCHAR (55),
     descript VARCHAR (255),
     feeback VARCHAR (255),
-    /*tiktok VARCHAR (55)*/
-    PRIMARY KEY (businessID)
-    FOREIGN KEY (nameID) REFERENCES business (businessName)
+    kindOf VARCHAR (60),
+    PRIMARY KEY (businessID),
+    FOREIGN KEY (businessNameID) REFERENCES business (_id),
+    
 )
 
 CREATE TABLE businessServices(
-    serviceID int AUTO_INCREMENT,
+    serviceID_ int AUTO_INCREMENT,
+    serviceID INT, 
     servicesAddress VARCHAR (100),
     phoneID VARCHAR (16),
     priceOf VARCHAR (55),
-    PRIMARY KEY (serviceID),
-    FOREIGN KEY (servicesAddress) REFERENCES business (businessAddress)
+    kindOf VARCHAR (55),
+    PRIMARY KEY (serviceID_),
+    FOREIGN KEY (serviceID) REFERENCES business (_id),
 )
+
+
+
+/*Procediminetos almacenados*/
+
+
