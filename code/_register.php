@@ -20,7 +20,7 @@ VALUES ('$businessName', '$email', '$businessLogo', '$address', '$phone', '$what
 if($conn->query($query)==TRUE){
     echo "<script>
     alert('Insertado correctamente')
-    window.location.replace('_registerForm.html');
+    window.location.replace('_registerForm.php');
     </script>";
 }else{
     echo "Error: ";
@@ -29,3 +29,4 @@ if($conn->query($query)==TRUE){
 mysqli_close($conn);
 
 ?>
+

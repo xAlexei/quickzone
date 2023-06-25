@@ -55,12 +55,12 @@
 
 
     <div class="page-content">
-        <!-- Mostrar negocios -->
+        <!-- Servicios de Taxi -->
        
          <div class="card card-style">
             <div class="content">
                 <p class="mb-n1 color-highlight font-600">Lista de</p>
-                <h1 class="font-24 font-800 mb-0">Lavanderias</h1>
+                <h1 class="font-24 font-800 mb-0">Servicios de taxi</h1>
                 <p>
                     Administre de manera rapida los negocios registrados
                 </p>
@@ -68,9 +68,9 @@
     include "_server.php";
     $conn = mysqli_connect($servername, $user, $pass, $database);
 
-    $query = "SELECT * FROM business where typeOf='Lavanderia'";
+    $query = "SELECT * FROM business where typeOf='Taxi'";
     $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
+    while($row = mysqli_fetch_assoc($res)){  
         
         echo "<div class='d-flex mb-4'>
         <div class='align-self-center'>
@@ -104,7 +104,7 @@
 
     $query = "SELECT * FROM business where typeOf='Prodcucto'";
     $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
+    while($row = mysqli_fetch_assoc($res)){  
         
         echo "<div class='d-flex mb-4'>
         <div class='align-self-center'>
@@ -128,7 +128,7 @@
     </div>
     
         </div>
-        
+        <!-- Servicios de Lavanderias -->
          <div class="card card-style">
             <div class="content">
                 <p class="mb-n1 color-highlight font-600">Lista de</p>
@@ -142,7 +142,7 @@
 
     $query = "SELECT * FROM business where typeOf='Lavanderia'";
     $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
+    while($row = mysqli_fetch_assoc($res)){  
         
         echo "<div class='d-flex mb-4'>
         <div class='align-self-center'>
@@ -163,6 +163,7 @@
 
       ?>
     </div>
+    <!-- Servicios de Restaurantes -->
         </div>
         <div class="card card-style">
             <div class="content">
@@ -177,7 +178,7 @@
 
     $query = "SELECT * FROM business where typeOf='Prodcucto'";
     $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
+    while($row = mysqli_fetch_assoc($res)){  
         
         echo "<div class='d-flex mb-4'>
         <div class='align-self-center'>
@@ -200,7 +201,116 @@
 
             </div>
         </div>
-        <!-- Pegar aqui -->
+        <!-- Farmacias -->
+        <div class="card card-style">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Farmacias</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
+                </p>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
+
+    $query = "SELECT * FROM business where typeOf='Lavanderia'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_assoc($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+        </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
+
+        </div>
+        <div class='ms-auto ps-3 align-self-center text-center'>
+        <a href='#'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+        </div>
+    </div>";
+    }
+  mysqli_close($conn);
+
+      ?>
+    </div>
+        </div>
+        <!-- Inmobiliarias -->
+        <div class="card card-style">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Inmobiliarias</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
+                </p>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
+
+    $query = "SELECT * FROM business where typeOf='Prodcucto'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_assoc($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+        </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
+
+             </div>
+             <div class='ms-auto ps-3 align-self-center text-center'>
+             <a href='#'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+             </div>
+         </div>";
+         }
+         mysqli_close($conn);
+
+         ?>
+
+            </div>
+        </div>
+        <!--Tiendas de conveniencia-->
+        <div class="card card-style">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Tiendas de Conveniencia</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
+                </p>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
+
+    $query = "SELECT * FROM business where typeOf='Lavanderia'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_assoc($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+        </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
+
+        </div>
+        <div class='ms-auto ps-3 align-self-center text-center'>
+        <a href='#'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+        </div>
+    </div>";
+    }
+  mysqli_close($conn);
+
+      ?>
+    </div>
+        </div>
+
     </div>
     <!-- Neogcios de lavaderia -->
          

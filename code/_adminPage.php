@@ -1,10 +1,5 @@
 <!DOCTYPE HTML>
 
-<?php
-
-
-
-?>
 
 <html lang="en">
 <head>
@@ -12,13 +7,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<title>AppKit BootStrap</title>
+<title>Panel Administrador</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
 <link rel="manifest" href="_manifest.json">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
 </head>
 
 <body class="theme-light" data-highlight="highlight-red">
@@ -45,7 +41,7 @@
     </div>
 
     <div class="page-title page-title-fixed">
-        <h1>Bienvenido quickzoneAdmin</h1>
+        <h1>Bienvenido</h1>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i class="fa fa-share-alt"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i class="fa fa-moon"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i class="fa fa-lightbulb color-yellow-dark"></i></a>
@@ -59,129 +55,266 @@
 
 
     <div class="page-content">
-
-     
-
-        <div class="card card-style shadow-xl">
+        <!-- Servicios de Taxi -->
+       
+         <div class="card card-style">
             <div class="content">
-                <p class="color-highlight font-600 mb-n1">A Complete Solution</p>
-                <h1 class="font-24 font-700 mb-2">Meet Appkit <i class="fa fa-star mt-n2 font-30 color-yellow-dark float-end me-2 scale-box"></i></h1>
-                <p class="mb-1">
-                    The ultimate Mobile Solution for your next mobile project. Appkit is packed with hundreds of reusable components, PWA, RTL and it's Dark Mode ready.
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Servicios de taxi</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
                 </p>
-            </div>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
+
+    $query = "SELECT * FROM business where typeOf='Taxi'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
         </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
 
-
-        <div class="card card-full-left card-style">
+        </div>
+        <div class='ms-auto ps-3 align-self-center text-center'>
+        <a href='_editBusiness.php?id=".$row['_id']."' name='id' ><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+        </div>
+    </div>";
+    }
+  mysqli_close($conn);
+      ?>
+    </div>
+        </div>
+         <div class="card card-style">
             <div class="content">
-                <div class="d-flex">
-                    <div class="me-3">
-                        <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/31l.jpg">
-                    </div>
-                    <div>
-                        <p class="color-highlight font-600 mb-n1">Copy and Paste Ready</p>
-                        <h2>Components</h2>
-                        <p class="mt-2">
-                            Reusable components that are just as easy as copy and paste.
-                        </p>
-                        <a href="index-components.html" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">View All</a>
-                    </div>
-                </div>
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Caripenterias</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
+                </p>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
 
-                <div class="divider mt-4"></div>
-
-                <div class="d-flex">
-                    <div class="me-3">
-                        <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/16l.jpg">
-                    </div>
-                    <div>
-                        <p class="color-highlight font-600 mb-n1">Beautifully Crafted</p>
-                        <h2>Pages</h2>
-                        <p class="mt-2">
-                            Pages that feel amazing to your fingertips! Ready to use!
-                        </p>
-                        <a href="index-pages.html" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">View All</a>
-                    </div>
-                </div>
-                <div class="divider mt-4"></div>
-
-                <div class="d-flex">
-                    <div class="me-3">
-                        <img width="120" class="fluid-img rounded-m shadow-xl" src="images/pictures/6l.jpg">
-                    </div>
-                    <div>
-                        <p class="color-highlight font-600 mb-n1">Endless Options</p>
-                        <h2>Homepages</h2>
-                        <p class="mt-2">
-                            Absolutely awesome homepages ready for you to enjoy.
-                        </p>
-                        <a href="index-homepages.html" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">View All</a>
-                    </div>
-                </div>
-
-            </div>
+    $query = "SELECT * FROM business where typeOf='Carpinteria'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
         </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
 
-        <div class="row mb-0">
-            <a href="#" class="col-6 pe-0">
-                <div class="card mr-0 card-style">
-                    <div class="d-flex pt-3 pb-3">
-                        <div class="align-self-center">
-                            <i class="fa fa-home color-green-light ms-3 font-34 mt-1"></i>
-                        </div>
-                        <div class="align-self-center">
-                            <h5 class="ps-2 ms-1 mb-0">PWA <br> Ready</h5>
-                        </div>
-                    </div>
-                    <p class="px-3">
-                        Enjoy AppKit from your Home Screen.
-                    </p>
-                </div>
-            </a>
-            <a href="#" class="col-6 ps-0">
-                <div class="card ml-0 card-style">
-                    <div class="d-flex pt-3 pb-3">
-                        <div class="align-self-center">
-                            <i class="fa fa-cog color-blue-dark ms-3 font-34 mt-1"></i>
-                        </div>
-                        <div class="align-self-center">
-                            <h5 class="ps-2 ms-1 mb-0">Clean<br>Code</h5>
-                        </div>
-                    </div>
-                    <p class="px-3">
-                        Powered by Bootstrap makes your job easier!
-                    </p>
-                </div>
-            </a>
         </div>
+        <div class='ms-auto ps-3 align-self-center text-center'>
+       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+        </div>
+    </div>";
+    }
+  mysqli_close($conn);
 
-        <a href="#" data-toggle-theme>
-            <div class="card card-style">
-                <div class="d-flex pt-3 mt-1 mb-2 pb-2">
-                    <div class="align-self-center">
-                        <i class="color-icon-gray color-gray-dark font-30 icon-40 text-center fa fa-moon ms-3 show-on-theme-light"></i>
-                        <i class="color-icon-yellow color-yellow-dark font-30 icon-40 text-center fa fa-sun ms-3 show-on-theme-dark"></i>
-                    </div>
-                    <div class="align-self-center">
-                        <p class="ps-2 ms-1 color-highlight font-500 mb-n1 mt-n2">Tap to Enable</p>
-                        <h4 class="show-on-theme-light ps-2 ms-1 mb-0">Dark Mode</h4>
-                        <h4 class="show-on-theme-dark ps-2 ms-1 mb-0">Light Mode</h4>
-                    </div>
-                    <div class="ms-auto align-self-center mt-n2">
-                        <div class="custom-control small-switch ios-switch me-3 mt-n2">
-                            <input data-toggle-theme type="checkbox" class="ios-input" id="toggle-dark-home">
-                            <label class="custom-control-label" for="toggle-dark-home"></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-
-        <div data-menu-load="menu-footer.html"></div>
-
+      ?>
 
     </div>
+    
+        </div>
+        <!-- Servicios de Lavanderias -->
+         <div class="card card-style">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Lavanderias</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
+                </p>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
+
+    $query = "SELECT * FROM business where typeOf='Lavanderia'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+        </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
+
+        </div>
+        <div class='ms-auto ps-3 align-self-center text-center'>
+       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+        </div>
+    </div>";
+    }
+  mysqli_close($conn);
+
+      ?>
+    </div>
+    <!-- Servicios de Restaurantes -->
+        </div>
+        <div class="card card-style">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Restaurantes</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
+                </p>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
+
+    $query = "SELECT * FROM business where typeOf='Restaurantes'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+        </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
+
+             </div>
+             <div class='ms-auto ps-3 align-self-center text-center'>
+            <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+             </div>
+         </div>";
+         }
+         mysqli_close($conn);
+
+         ?>
+
+            </div>
+        </div>
+        <!-- Farmacias -->
+        <div class="card card-style">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Farmacias</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
+                </p>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
+
+    $query = "SELECT * FROM business where typeOf='Farmacias'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+        </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
+
+        </div>
+        <div class='ms-auto ps-3 align-self-center text-center'>
+       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+        </div>
+    </div>";
+    }
+  mysqli_close($conn);
+
+      ?>
+    </div>
+        </div>
+        <!-- Inmobiliarias -->
+        <div class="card card-style">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Inmobiliarias</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
+                </p>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
+
+    $query = "SELECT * FROM business where typeOf='Inmobiliarias'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+        </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
+
+             </div>
+             <div class='ms-auto ps-3 align-self-center text-center'>
+            <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+             </div>
+         </div>";
+         }
+         mysqli_close($conn);
+
+         ?>
+
+            </div>
+        </div>
+        <!--Tiendas de conveniencia-->
+        <div class="card card-style">
+            <div class="content">
+                <p class="mb-n1 color-highlight font-600">Lista de</p>
+                <h1 class="font-24 font-800 mb-0">Tiendas de Conveniencia</h1>
+                <p>
+                    Administre de manera rapida los negocios registrados
+                </p>
+    <?php 
+    include "_server.php";
+    $conn = mysqli_connect($servername, $user, $pass, $database);
+
+    $query = "SELECT * FROM business where typeOf='Tiendas'";
+    $res = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_array($res)){  
+        
+        echo "<div class='d-flex mb-4'>
+        <div class='align-self-center'>
+            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+        </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
+
+        </div>
+        <div class='ms-auto ps-3 align-self-center text-center'>
+       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+        </div>
+    </div>";
+    }
+  mysqli_close($conn);
+
+      ?>
+    </div>
+        </div>
+
+    </div>
+    <!-- Neogcios de lavaderia -->
+         
+
     <!-- End of Page Content-->
     <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
 
@@ -242,7 +375,7 @@
             <p class="text-center ms-3 me-3">
                 Install Appkit on your home screen, and access it just like a regular app. Open your Safari menu and tap "Add to Home Screen".
             </p>
-            <a href="#" class="pwa-dismiss close-menu btn-full mt-3 text-center text-uppercase font-700 color-red-light opacity-90 font-110 pb-5">Maybe later</a>
+            <a class="pwa-dismiss close-menu btn-full mt-3 text-center text-uppercase font-700 color-red-light opacity-90 font-110 pb-5">Maybe later</a>
         </div>
     </div>
 

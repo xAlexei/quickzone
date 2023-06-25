@@ -107,7 +107,7 @@ if (isset($_POST['update'])) {
         <div class="card card-style">
             <div class="content mb-0">      
                 <!-- Formulario -->
-                <form action='_editBusiness.php?id=<?php echo $_GET['id'];?>' method="post">
+                <form action='_editBusiness.php?updateid=<?php echo $_GET['id'];?>' method="post">
                 <!-- Nombre del negocio -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
                     <input type="text" class="form-control validate-text" name="name" id="name"  value="<?php echo $businessName; ?>" placeholder="Hola">
