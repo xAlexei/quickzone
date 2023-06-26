@@ -1,7 +1,7 @@
 <?php 
 
 include "_server.php";
-$conn = ($servername, $user, $pass, $database);
+$conn = mysqli_connect($servername, $user, $pass, $database);
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
@@ -10,9 +10,12 @@ if(isset($_GET['id'])){
     if(!$result) {
     die("Query Failed.");
   }
-
-  echo "<sript>alert('Eliminado')</script>";
-  header('Location: _adminPage.php');
+  echo "<script>
+    alert('Eliminado')
+    window.location.replace('_adminPage.php');
+    </script>";
 }
+
+mysqli_close($conn);
 
 ?>

@@ -24,14 +24,14 @@ CREATE TABLE users (
 )
 
 CREATE TABLE Products(
-    businessID INT AUTO_INCREMENT,
+    productID INT AUTO_INCREMENT,
     businessNameID INT,
     productName VARCHAR (55),
     price VARCHAR (55),
     descript VARCHAR (255),
-    typeOf VARCHAR (60),
-    PRIMARY KEY (businessID),
-    FOREIGN KEY (businessNameID) REFERENCES business (_id),
+    linkImage VARCHAR (255),
+    PRIMARY KEY (productID),
+    FOREIGN KEY (businessNameID) REFERENCES business (_id)
 )
 
 CREATE TABLE businessServices(

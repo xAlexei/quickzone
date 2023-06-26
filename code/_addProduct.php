@@ -1,3 +1,22 @@
+<?php 
+
+include "_server.php";
+$conn = mysqli_connect($servername, $user, $pass, $database);
+$id = $_GET['id'];
+
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    $query = "SELECT * FROM business";
+    $result = mysqli_query($conn, $query);
+    if(mysqli_num_rows($result) == 1) {
+    $row = mysqli_fetch_array($result);
+  }
+}
+
+mysqli_close($conn);
+
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -5,17 +24,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<title>Registro Nuevo</title>
+<title>Añadir producto</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">    
 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
-<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.all.min.js"></script>
 </head>
     
 <body class="theme-light">
@@ -50,75 +65,37 @@
 
     <!--   Banner   --> 
 
-    
-
     <div class="page-title-clear">
 
     </div>
         <div class="card card-style">
             <div class="content mb-0">      
                 <!-- Formulario -->
-                <form action="_register.php" method="post">
-                <!-- Nombre del negocio -->
+                <form action="_add.php" method="post">
+                <!-- Nombre del Producto -->
+                <input type="hidden" value="<?php echo $_GET['id'];?>" name="nameID">
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="name" id="name" placeholder= "Nombre del Negocio">
-                    <label for="form1" class="color-highlight">Nombre del Negocio</label>
+                    <input type="text" class="form-control validate-text" name="productName" id="productName" placeholder= "Nombre del producto">
+                    <label for="form1" class="color-highlight">Nombre del Producto</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
                 <!-- Email  -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="email" class="form-control validate-text" name="email" id="email" placeholder="Correo Electronico">
-                    <label for="form2" class="color-highlight">Correo Electronico</label>
+                    <input type="text" class="form-control validate-text" name="price" id="price" placeholder="Precio del producto Ejemplo: '$12.99'">
+                    <label for="form2" class="color-highlight">Precio del producto Ejemplo: "$12.99"</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
                 <!-- Link de imagen  -->
-                <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="logo" id="logo" placeholder="Link de imagen">
-                    <label for="form2" class="color-highlight">Business Logo</label>
-                    <i class="fa fa-times disabled invalid color-red-dark"></i>
-                    <i class="fa fa-check disabled valid color-green-dark"></i>
-                    <em>(required)</em>
-                </div>
+                <textarea id="descript" style="width: 100%;" name="descript" placeholder="Descripcion del producto"></textarea>
+                    <em class="mt-n6">(required)</em>
                 <!--  Direccion -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="address" id="address" placeholder="Direccion">
-                    <label for="form3" class="color-highlight">Direccion</label>
-                    <i class="fa fa-times disabled invalid color-red-dark"></i>
-                    <i class="fa fa-check disabled valid color-green-dark"></i>
-                    <em>(required)</em>
-                </div>
-                <!-- Telefono y Whatsapp  -->
-                <div class="input-style has-borders no-icon validate-field mb-4">
-                   <div class="input-group">
-                       <input type="tel" class="form-control validate-text" name="phone" id="phone" placeholder="Telefono">
-                       <input type="tel" class="form-control validate-text" name="whats" id="whats" placeholder="WhatsApp">
-                       <em>(required)</em>
-                   </div>
-                </div>
-                <div class="col-12">
-                    <div class="input-style input-style-always-active has-borders no-icon mb-4">
-                        <label for="form51" class="color-highlight"></label>
-                        <select id="line" name="line">
-                            <option value="default">Selecciona una opcion</option>
-                            <option value="Carpinteria">Carpinteria</option>
-                            <option value="Lavanderia">Lavanderia</option>
-                            <option value="Taxi">Servicios de taxi</option>
-                            <option value="Restaurantes">Restaurantes</option>
-                            <option value="Farmacias">Farmacias</option>
-                            <option value="Tiendas">Tiendas de conveniencia</option>
-                            <option value="Inmobiliarias">Inmobiliarias</option>
-                        
-                        </select>
-                        <span><i class="fa fa-chevron-down"></i></span>
-                    </div>
-                </div>
-                <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="googleLink" id="googleLink" placeholder="Ubicacion de google">
-                    <label for="form3" class="color-highlight">Google Link</label>
+                    <input type="text" class="form-control validate-text" name="linkImage" id="linkImage" placeholder="Link de imagen">
+                    <label for="form3" class="color-highlight">Link de la imagen</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
@@ -145,7 +122,7 @@
 <div class="card card-style">
     <div class="content">
         <h1 class="font-24 font-800 mb-0">Carga tu producto</h1>
-        <br> <div class="d-flex mb-4">
+         <div class="d-flex mb-4">
             <div class="align-self-center">
                 <img src="images/food/small/1s.jpg" class="rounded-m me-3" width="80">
             </div>

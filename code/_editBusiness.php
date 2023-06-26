@@ -46,9 +46,9 @@ if (isset($_POST['update'])) {
     
     echo "<script>alert('Actualizado')</script>";
   }
-  
 
-
+  $query2 = "SELECT * FROM business b INNER JOIN products p ON p.businessNameID = b._id WHERE b._id = $id";
+  $res2 = mysqli_query($conn, $query2) or die( mysqli_error($conn));
 
 ?>
 <!DOCTYPE HTML>
@@ -58,17 +58,13 @@ if (isset($_POST['update'])) {
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<title>Quickzone</title>
+<title>Editar Negocio</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">    
 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
-<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.all.min.js"></script>
 </head>
     
 <body class="theme-light">
@@ -192,59 +188,37 @@ if (isset($_POST['update'])) {
     <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-load="menu-colors.html" data-menu-height="480"></div> 
      
 </div>
-
-<div class="card card-style">
-    <div class="content">
-        <h1 class="font-24 font-800 mb-0">Carga tu producto</h1>
-        <br> <div class="d-flex mb-4">
-            <div class="align-self-center">
-                <img src="images/food/small/1s.jpg" class="rounded-m me-3" width="80">
-            </div>
-            <div class="align-self-center">
-                <h2 class="font-15 line-height-s mt-1 mb-n1">Cheesy Hamburger <br> with Bacon and Ham</h2>
-                <p class="mb-0 font-11 mt-2 line-height-s">
-                    <i class="fa fa-truck color-brown-dark pe-2"></i>Ready in 20 Minutes
+<div class="page-content">
+        <!-- Servicios de Taxi -->
+       
+        <div class="card card-style">
+            <div class="content">
+                <a href="_addProduct.php?id=<?php echo $_GET['id']; ?>" name="id">
+                <h1 class="font-24 font-800 mb-0">Añadir mas Productos
+                <i class="fa-sharp fa-solid fa-plus" style="padding-left: auto;color: #e7820d;"></i>
+                </h1></a>
+                <p>
+                    Administre de manera rapida los negocios registrados
                 </p>
-            </div>
-            <div class="ms-auto ps-3 align-self-center text-center">
-                <h2 class="font-18 mb-n2">$14.75</h2>
-                <span class="color-highlight font-9">per serving</span>
-            </div>
+    <?php $i=0; while($row2 = mysqli_fetch_array($res2)){ $i++; ?>
+                <div class='d-flex mb-4'>
+         <div class='align-self-center'>
+            <img src="<?php echo $row2['linkImage'] ?>" class='rounded-m me-3' width='80'>
         </div>
-        <div class="d-flex mb-4">
-            <div class="align-self-center">
-                <img src="images/food/small/8s.jpg" class="rounded-m me-3" width="80">
-            </div>
-            <div class="align-self-center">
-                <h2 class="font-15 line-height-s mt-1 mb-n1">Chicken Crispy <br> Strips with Fries</h2>
-                <p class="mb-0 font-11 mt-2 line-height-s">
-                    <i class="fa fa-truck color-brown-dark pe-2"></i>Ready in 25 Minutes
-                </p>
-            </div>
-            <div class="ms-auto ps-3 align-self-center text-center">
-                <h2 class="font-18 mb-n2">$23.44</h2>
-                <span class="color-highlight font-9">per serving</span>
-            </div>
+        <div class='align-self-center'>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'><?php echo $row2['productName'];?></h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row2['descript']?></p>
+            <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row2['price']?></p>
         </div>
-        <div class="d-flex mb-4">
-            <div class="align-self-center">
-                <img src="images/food/small/8s.jpg" class="rounded-m me-3" width="80">
-            </div>
-            <div class="align-self-center">
-                <h2 class="font-15 line-height-s mt-1 mb-n1">Chicken Crispy <br> Strips with Fries</h2>
-                <p class="mb-0 font-11 mt-2 line-height-s">
-                    <i class="fa fa-truck color-brown-dark pe-2"></i>Ready in 25 Minutes
-                </p>
-            </div>
-            <div class="ms-auto ps-3 align-self-center text-center">
-                <h2 class="font-18 mb-n2">$23.44</h2>
-                <span class="color-highlight font-9">per serving</span>
-            </div>
+        <div class='ms-auto ps-3 align-self-center text-center'>
+            <a href=""><i style='font-size: 35px;' class='uil uil-edit'></i></a>
         </div>
     </div>
-    <div data-menu-load="menu-footer.html"></div>
+    <?php }?>
+    </div>
 </div>
 
+    </div>
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 </body>

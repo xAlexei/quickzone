@@ -83,7 +83,8 @@
 
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
-        <a href='_editBusiness.php?id=".$row['_id']."' name='id' ><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+        <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+        <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
         </div>
     </div>";
     }
@@ -118,10 +119,11 @@
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
        <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
         </div>
     </div>";
     }
-  mysqli_close($conn);
+  
 
       ?>
 
@@ -156,6 +158,7 @@
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
        <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
         </div>
     </div>";
     }
@@ -192,6 +195,7 @@
              </div>
              <div class='ms-auto ps-3 align-self-center text-center'>
             <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+            <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
              </div>
          </div>";
          }
@@ -229,6 +233,7 @@
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
        <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
         </div>
     </div>";
     }
@@ -265,6 +270,7 @@
              </div>
              <div class='ms-auto ps-3 align-self-center text-center'>
             <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+            <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
              </div>
          </div>";
          }
@@ -302,6 +308,7 @@
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
        <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
         </div>
     </div>";
     }
