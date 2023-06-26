@@ -46,6 +46,7 @@ if (isset($_POST['update'])) {
     
     echo "<script>alert('Actualizado')</script>";
   }
+  
 
 
 
@@ -110,7 +111,7 @@ if (isset($_POST['update'])) {
                 <form action='_editBusiness.php?id=<?php echo $_GET['id'];?>' method="post">
                 <!-- Nombre del negocio -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="name" id="name"  value="<?php echo $businessName; ?>" placeholder="Hola">
+                    <input type="text" class="form-control validate-text" name="name" id="name"  value="<?php echo $businessName; ?>" placeholder="Nombre del negocio ">
                     <label for="form1" class="color-highlight">Nombre del Negocio</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -118,7 +119,7 @@ if (isset($_POST['update'])) {
                 </div>
                 <!-- Email  -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="email" class="form-control validate-text" name="email" id="email"  value="<?php echo $email; ?>" placeholder="Correo Electronico">;
+                    <input type="email" class="form-control validate-text" name="email" id="email"  value="<?php echo $email; ?>" placeholder="Correo Electronico">
                     <label for="form2" class="color-highlight">Correo Electronico</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -171,7 +172,7 @@ if (isset($_POST['update'])) {
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <button class="btn btn-m btn-full mb-3 rounded-xs text-uppercase font-700 shadow-s bg-orange-light" name="update">
+                <button style="width: 100%;" class="btn btn-m btn-full mb-3 rounded-xs text-uppercase font-700 shadow-s bg-orange-light" name="update">
           Update
 </button>
                 </form>

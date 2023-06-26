@@ -1,4 +1,17 @@
-<!DOCTYPE HTML>
+<?php
+
+include "_server.php";
+$conn = mysqli_connect($servername, $user, $pass, $database);
+$query = "SELECT * FROM business";
+$res = mysqli_query($conn, $query);
+while($row = mysqli_fetch_array($res)){  
+        
+    echo "";
+}
+mysqli_close($conn);
+
+?>
+ <!DOCTYPE HTML>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -50,7 +63,7 @@
         <div class="content mt-n3 mb-4">
             <div class="search-box search-dark shadow-sm border-0 mt-4 bg-theme rounded-sm bottom-0">
                 <i class="fa fa-search ms-1"></i>
-                <input type="text" class="border-0" placeholder="Searching for something? Try 'pizza'" data-search>
+                <input type="text" class="border-0" placeholder="¿Buscas algo en especial?" data-search>
             </div>   
             <div class="search-results disabled-search-list">
                 <div>

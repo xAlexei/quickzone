@@ -23,26 +23,24 @@ CREATE TABLE users (
     FOREIGN KEY (businessID) REFERENCES business (_id)
 )
 
-CREATE TABLE businessProducts(
+CREATE TABLE Products(
     businessID INT AUTO_INCREMENT,
     businessNameID INT,
     productName VARCHAR (55),
     price VARCHAR (55),
     descript VARCHAR (255),
-    feeback VARCHAR (255),
-    kindOf VARCHAR (60),
+    typeOf VARCHAR (60),
     PRIMARY KEY (businessID),
     FOREIGN KEY (businessNameID) REFERENCES business (_id),
-    
 )
 
 CREATE TABLE businessServices(
     serviceID_ int AUTO_INCREMENT,
-    serviceID INT, 
+    businessNameID INT, 
     servicesAddress VARCHAR (100),
     phoneID VARCHAR (16),
     priceOf VARCHAR (55),
-    kindOf VARCHAR (55),
+    typeOf VARCHAR (55),
     PRIMARY KEY (serviceID_),
     FOREIGN KEY (serviceID) REFERENCES business (_id),
 )
