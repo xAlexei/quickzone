@@ -3,7 +3,7 @@
     $conn = mysqli_connect($servername, $user, $pass, $database);
     $id = 20;
 
-    $query = "SELECT * FROM business b INNER JOIN products p ON p.businessNameID = b._id WHERE b._id = $id";
+    $query = "SELECT * FROM business LIMIT 4";
     $res = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
 ?>
@@ -31,15 +31,15 @@
                 <p>
                     Administre de manera rapida los negocios registrados
                 </p>
-<?php $i=0; while($row = mysqli_fetch_array($res)){ $i++; ?>
+    <?php $i=0; while($row = mysqli_fetch_array($res)){ $i++; ?>
                 <div class='d-flex mb-4'>
          <div class='align-self-center'>
-            <img src="<?php echo $row['linkImage'] ?>" class='rounded-m me-3' width='80'>
+            <img src="<?php echo $row['businessLogo'] ?>" class='rounded-m me-3' width='80'>
         </div>
         <div class='align-self-center'>
-            <h2 class='font-15 line-height-s mt-1 mb-n1'><?php echo $row['productName'];?></h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row['descript']?></p>
-            <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row['price']?></p>
+            <h2 class='font-15 line-height-s mt-1 mb-n1'><?php echo $row['businessName'];?></h2>
+            <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row['businessAddress']?></p>
+            <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row['email']?></p>
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
             <a href=""><i style='font-size: 35px;' class='uil uil-edit'></i></a>
@@ -48,4 +48,19 @@
     </div>
     <?php }?>
     </div>
+</div>
+
+<div class="card m-2 card-style">
+    <img src="<?php echo  $row['businessLogo']?>" class="img-fluid">
+        <div class="p-2 bg-theme rounded-sm">
+            <div class="d-flex">
+                <div>
+                    <h4 class="mb-n1 font-14 line-height-xs pb-2">Royal <br>Burger</h4>
+                </div>
+            <div class="ms-auto">
+                <h4 class="font-16">$24</h4>
+                    </div>
+                </div>
+                    <p class="font-10 mb-0"><i class="fa fa-star color-yellow-dark pe-2"></i>34 Recommend It</p>
+        </div>
 </div>

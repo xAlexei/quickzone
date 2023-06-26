@@ -2,13 +2,8 @@
 
 include "_server.php";
 $conn = mysqli_connect($servername, $user, $pass, $database);
-$query = "SELECT * FROM business";
-$res = mysqli_query($conn, $query);
-while($row = mysqli_fetch_array($res)){  
-        
-    echo "";
-}
-mysqli_close($conn);
+$query = "SELECT * FROM business LIMIT 4";
+$res = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
 ?>
  <!DOCTYPE HTML>
@@ -58,8 +53,7 @@ mysqli_close($conn);
     </div>
     <div class="page-title-clear"></div>
         
-    <div class="page-content">
-            
+    <div class="page-content">            
         <div class="content mt-n3 mb-4">
             <div class="search-box search-dark shadow-sm border-0 mt-4 bg-theme rounded-sm bottom-0">
                 <i class="fa fa-search ms-1"></i>
@@ -182,76 +176,49 @@ mysqli_close($conn);
         <div class="content mt-0 mb-0">
             <div class="d-flex">
                 <div class="align-self-center">
-                    <h1 class="mb-0 font-18">Our Favorites</h1>
+                    <h1 class="mb-0 font-18">Nuestros Favoritos</h1>
                 </div>
                 <div class="ms-auto align-self-center">
-                    <a href="#" class="float-end font-12 font-400">See All</a>
+                    <a href="_seeAll.php" class="float-end font-12 font-400">Ver todos</a>
                 </div>
             </div>
         </div>
+        <!-- Slider de conmercios -->
         
-        <div class="splide double-slider visible-slider slider-no-arrows slider-no-dots" id="double-slider-1">
+       <div class="splide double-slider visible-slider slider-no-arrows slider-no-dots" id="double-slider-2">
             <div class="splide__track">
                 <div class="splide__list">
+                <?php while($row = mysqli_fetch_array($res)){ ?>
                     <div class="splide__slide">
-                        <div class="card m-2 card-style">
-                            <img src="https://royalpub.co.uk/wp-content/uploads/2021/04/The-Royal-Burger-Crop.jpg" class="img-fluid">
+                        <div class="card m-2 card-style" data-card-height="250">
+                            <img src="<?php echo $row['businessLogo']?>" style="                        
+                            max-width: 100%;                            
+                            height: auto;" class="">
                             <div class="p-2 bg-theme rounded-sm">
                                 <div class="d-flex">
                                     <div>
-                                        <h4 class="mb-n1 font-14 line-height-xs pb-2">Royal <br>Burger</h4>
+                                        <h4 class="mb-n1 font-14 line-height-xs pb-2"><?php echo $row['businessName'];?> <br>Burger</h4>
                                     </div>
                                     <div class="ms-auto">
-                                        <h4 class="font-16">$24</h4>
                                     </div>
                                 </div>
-                                <p class="font-10 mb-0"><i class="fa fa-star color-yellow-dark pe-2"></i>34 Recommend It</p>
-                            </div>
-                        </div>
+                            <p class="font-10 mb-0"><i class="fa fa-star color-yellow-dark pe-2"></i>34 Recommend It</p>
                     </div>
-                    <div class="splide__slide">
-                        <div class="card m-2 card-style">
-                            <img src="https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/35EDE7B7-C552-4E1E-8C2C-60185F67AB08/Derivates/CEF71B88-4FEB-4561-9951-94C45E8E5ABA.jpg" class="img-fluid">
-                            <div class="p-2 bg-theme rounded-sm">
-                                <div class="d-flex">
-                                    <div>
-                                        <h4 class="mb-n1 font-14 line-height-xs pb-2">Pizza <br>Prosciutto</h4>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <h4 class="font-16">$24</h4>
-                                    </div>
-                                </div>
-                                <p class="font-10 mb-0"><i class="fa fa-star color-yellow-dark pe-2"></i>34 Recommend It</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="splide__slide">
-                        <div class="card m-2 card-style">
-                            <img src="https://www.foodandwine.com/thmb/lZqKp2anzFBHkMawgfxKjCnarcU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/HD-fw200609_trufflecake-1f285ff1b07944d7ae5ceee94211bd9d.jpg" class="img-fluid">
-                            <div class="p-2 bg-theme rounded-sm">
-                                <div class="d-flex">
-                                    <div>
-                                        <h4 class="mb-n1 font-14 line-height-xs pb-2">Chocolate <br>Dessert</h4>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <h4 class="font-16">$24</h4>
-                                    </div>
-                                </div>
-                                <p class="font-10 mb-0"><i class="fa fa-star color-yellow-dark pe-2"></i>34 Recommend It</p>
-                            </div>
-                        </div>
+                </div>
+        </div>
+        <?php }?>
                     </div>
                 </div>
             </div>
-        </div>
-    
+        
+        <!-- Popular choices -->
         <div class="content mb-0">
             <div class="d-flex">
                 <div class="align-self-center">
                     <h1 class="mb-0 font-18">Popular Choices</h1>
                 </div>
                 <div class="ms-auto align-self-center">
-                    <a href="#" class="float-end font-12 font-400">See All</a>
+                    <a href="#" class="float-end font-12 font-400">Ver todos</a>
                 </div>
             </div>
             <div class="row mb-0">
@@ -291,73 +258,8 @@ mysqli_close($conn);
                 </div>
             </div>
         </div>
-        
-        <div class="content mt-0 mb-0">
-            <div class="d-flex">
-                <div class="align-self-center">
-                    <h1 class="mb-0 font-18">Fresh Recipes</h1>
-                </div>
-                <div class="ms-auto align-self-center">
-                    <a href="#" class="float-end font-12 font-400">See All</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="splide double-slider visible-slider slider-no-arrows slider-no-dots" id="double-slider-2">
-            <div class="splide__track">
-                <div class="splide__list">
-                    <div class="splide__slide">
-                        <div class="card m-2 card-style">
-                            <img src="images/food/regular/1.jpg" class="img-fluid">
-                            <div class="p-2 bg-theme rounded-sm">
-                                <div class="d-flex">
-                                    <div>
-                                        <h4 class="mb-n1 font-14 line-height-xs pb-2">Royal <br>Burger</h4>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <h4 class="font-16">$24</h4>
-                                    </div>
-                                </div>
-                                <p class="font-10 mb-0"><i class="fa fa-star color-yellow-dark pe-2"></i>34 Recommend It</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="splide__slide">
-                        <div class="card m-2 card-style">
-                            <img src="images/food/regular/2.jpg" class="img-fluid">
-                            <div class="p-2 bg-theme rounded-sm">
-                                <div class="d-flex">
-                                    <div>
-                                        <h4 class="mb-n1 font-14 line-height-xs pb-2">Pizza <br>Prosciutto</h4>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <h4 class="font-16">$24</h4>
-                                    </div>
-                                </div>
-                                <p class="font-10 mb-0"><i class="fa fa-star color-yellow-dark pe-2"></i>34 Recommend It</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="splide__slide">
-                        <div class="card m-2 card-style">
-                            <img src="images/food/regular/3.jpg" class="img-fluid">
-                            <div class="p-2 bg-theme rounded-sm">
-                                <div class="d-flex">
-                                    <div>
-                                        <h4 class="mb-n1 font-14 line-height-xs pb-2">Chocolate <br>Dessert</h4>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <h4 class="font-16">$24</h4>
-                                    </div>
-                                </div>
-                                <p class="font-10 mb-0"><i class="fa fa-star color-yellow-dark pe-2"></i>34 Recommend It</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
+        <!-- Best Rated Dishes -->
         
         <div class="content mb-0">
             <div class="d-flex">
@@ -433,6 +335,7 @@ mysqli_close($conn);
         <div class="mt-4" data-menu-load="menu-footer.html"></div>
     </div>
     <!-- Page content ends here-->
+    
     
     <!-- Added to Bookmarks Menu-->
     <div id="menu-heart" 
