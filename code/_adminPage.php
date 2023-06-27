@@ -80,18 +80,16 @@
             <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
             <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
             <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-
+            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
-        <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
-        <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
+        <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
+        <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
         </div>
-    </div>";
-    }
-  mysqli_close($conn);
-      ?>
+    </div>";?>
     </div>
         </div>
+        <?php }?>
          <div class="card card-style">
             <div class="content">
                 <p class="mb-n1 color-highlight font-600">Lista de</p>
@@ -115,16 +113,15 @@
             <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
             <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
             <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['email']."</p>
+            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
-       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
-       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
+       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
+       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
         </div>
     </div>";
-    }
-
-      ?>
+    }?>
 
     </div>
     
@@ -153,11 +150,11 @@
             <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
             <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
             <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-
+            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
-       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
-       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
+       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
+       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
         </div>
     </div>";
     }
@@ -190,11 +187,11 @@
             <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
             <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
             <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-
+            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
              </div>
              <div class='ms-auto ps-3 align-self-center text-center'>
-            <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
-            <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
+            <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
+            <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
              </div>
          </div>";
          }
@@ -227,12 +224,12 @@
         <div class='align-self-center'>
             <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
             <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-
+            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>  
+            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
-       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
-       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
+       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
+       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
         </div>
     </div>";
     }
@@ -265,11 +262,11 @@
             <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
             <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
             <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-
+            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
              </div>
              <div class='ms-auto ps-3 align-self-center text-center'>
-            <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
-            <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
+            <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
+            <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
              </div>
          </div>";
          }
@@ -303,11 +300,11 @@
             <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
             <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
             <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-
+            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
         </div>
         <div class='ms-auto ps-3 align-self-center text-center'>
-       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 35px;' class='uil uil-edit'></i></a>
-       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 35px;'></i></a>
+       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
+       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
         </div>
     </div>";
     }

@@ -23,7 +23,7 @@ if($conn->query($query)==TRUE){
     window.location.replace('_registerForm.php');
     </script>";
 }else{
-    echo "Error: ";
+    echo "Error: ". mysqli_error($conn);
 }
 
 mysqli_close($conn);

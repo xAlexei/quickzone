@@ -4,6 +4,8 @@ include "_server.php";
 
 $conn = mysqli_connect($servername, $user, $pass, $database);
 $query = "SELECT * FROM business";
+$res = mysqli_query($conn, $query);
+
 
 
 ?>
@@ -86,6 +88,7 @@ $query = "SELECT * FROM business";
                         <div data-card-height="220" class="card  shadow-xl rounded-m bg-19">
                             <div class="card-bottom text-center">
                                 <h4 class="color-white font-800 mb-3">Dark Mode</h4>
+                                
                             </div>
                             <div class="card-overlay bg-gradient"></div>
                         </div>

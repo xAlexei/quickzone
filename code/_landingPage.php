@@ -5,6 +5,8 @@ $conn = mysqli_connect($servername, $user, $pass, $database);
 $query = "SELECT * FROM business LIMIT 4";
 $res = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
+$query2 = "SELECT * FROM business WHERE typeOf ''";
+
 ?>
  <!DOCTYPE HTML>
 <html lang="en">
@@ -130,6 +132,7 @@ $res = mysqli_query($conn, $query) or die( mysqli_error($conn));
         <div class="splide single-slider slider-no-arrows visible-slider slider-no-dots" id="single-slider-1">
             <div class="splide__track">
                 <div class="splide__list">
+                    <?php    ?>
                     <div class="splide__slide">
                         <div class="card card-style ms-3" style="background-image:url(images/products/cheesburger.jpg);" data-card-height="300">
                             <div class="card-top px-3 py-3">
@@ -197,7 +200,7 @@ $res = mysqli_query($conn, $query) or die( mysqli_error($conn));
                             <div class="p-2 bg-theme rounded-sm">
                                 <div class="d-flex">
                                     <div>
-                                        <h4 class="mb-n1 font-14 line-height-xs pb-2"><?php echo $row['businessName'];?> <br>Burger</h4>
+                                        <h4 class="mb-n1 font-14 line-height-xs pb-2"><?php echo $row['businessName'];?></h4>
                                     </div>
                                     <div class="ms-auto">
                                     </div>

@@ -17,9 +17,13 @@ if(isset($_GET['id'])){
     $id = $_GET['id'];
     $query = "SELECT * FROM business WHERE _id=$id";
     $result = mysqli_query($conn, $query);
-    if(mysqli_num_rows($result) == 1) {
-    $row = mysqli_fetch_array($result);
-  }
+    try {
+        if(mysqli_fetch_array($result) == 1){
+             $row = mysqli_fetch_array($result);
+        }
+    } catch (\Throwable $th) {
+        //throw $th;
+    }
 }
 
 if (isset($_POST['update'])) {
@@ -32,7 +36,7 @@ if (isset($_POST['update'])) {
     $whatsApp = $_POST['whats'];
     $line = $_POST['line'];
     $googleLink = $_POST['googleLink'];
-  
+     try {
     $query = "UPDATE business set 
     businessName = '$businessName', 
     email = '$email',
@@ -45,10 +49,20 @@ if (isset($_POST['update'])) {
     mysqli_query($conn, $query);
     
     echo "<script>alert('Actualizado')</script>";
+     } catch (\Throwable $th) {
+        //throw $th;
+     }
+  
+    
   }
 
   $query2 = "SELECT * FROM business b INNER JOIN products p ON p.businessNameID = b._id WHERE b._id = $id";
-  $res2 = mysqli_query($conn, $query2) or die( mysqli_error($conn));
+  try {
+    $res2 = mysqli_query($conn, $query2) or die( mysqli_error($conn));
+  } catch (\Throwable $th) {
+    //throw $th;
+  }
+  
 
 ?>
 <!DOCTYPE HTML>
@@ -200,23 +214,23 @@ if (isset($_POST['update'])) {
                 <p>
                     Administre de manera rapida los negocios registrados
                 </p>
-    <?php $i=0; while($row2 = mysqli_fetch_array($res2)){ $i++; ?>
+                <?php $i=0; while($row2 = mysqli_fetch_array($res2)){ $i++; ?>
                 <div class='d-flex mb-4'>
-         <div class='align-self-center'>
-            <img src="<?php echo $row2['linkImage'] ?>" class='rounded-m me-3' width='80'>
+                    <div class='align-self-center'>
+                        <img src="<?php echo $row2['linkImage'] ?>" class='rounded-m me-3' width='80'>
+                     </div>
+                <div class='align-self-center'>
+                    <h2 class='font-15 line-height-s mt-1 mb-n1'><?php echo $row2['productName'];?></h2>
+                        <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row2['descript']?></p>
+                        <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row2['price']?></p>
+                </div>
+                    <div class='ms-auto ps-3 align-self-center text-center'>
+                        <a href=""><i style='font-size: 35px;' class='uil uil-edit'></i></a>
+                    </div>
+                </div>
+            </div>
+            <?php }?>
         </div>
-        <div class='align-self-center'>
-            <h2 class='font-15 line-height-s mt-1 mb-n1'><?php echo $row2['productName'];?></h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row2['descript']?></p>
-            <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row2['price']?></p>
-        </div>
-        <div class='ms-auto ps-3 align-self-center text-center'>
-            <a href=""><i style='font-size: 35px;' class='uil uil-edit'></i></a>
-        </div>
-    </div>
-    <?php }?>
-    </div>
-</div>
 
     </div>
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
