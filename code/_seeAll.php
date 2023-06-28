@@ -140,7 +140,6 @@ $res = mysqli_query($conn, $query);
                         <a href="index-components.html" class="btn btn-sm rounded-s font-13 font-600 gradient-highlight">View All</a>
                     </div>
                 </div>
-
                 <div class="divider mt-4"></div>
 
                 <div class="d-flex">

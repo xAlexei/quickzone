@@ -4,6 +4,7 @@ include "_server.php";
 
 $conn = mysqli_connect($servername, $user, $pass, $database);
 
+
  $businessName = $_POST['name'];
  $email = $_POST['email'];
  $businessLogo = $_POST['logo'];

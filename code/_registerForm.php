@@ -12,10 +12,6 @@
 <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">    
 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
-<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.all.min.js"></script>
 </head>
     
 <body class="theme-light">
@@ -35,7 +31,7 @@
     <div id="footer-bar" class="footer-bar-6">
         <a href="index-components.html" class="active-nav"><i class="fa fa-layer-group"></i><span>Features</span></a>
         <a href="index-pages.html"><i class="fa fa-file"></i><span>Pages</span></a>
-        <a href="index.html" class="circle-nav"><i class="fa fa-home"></i><span>Welcome</span></a>
+        <a href="_landingPage.html" class="circle-nav"><i class="fa fa-home"></i><span>Inicio</span></a>
         <a href="index-projects.html"><i class="fa fa-camera"></i><span>Projects</span></a>
         <a href="#" data-menu="menu-main"><i class="fa fa-bars"></i><span>Menu</span></a>
     </div>

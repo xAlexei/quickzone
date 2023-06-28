@@ -1,20 +1,7 @@
-<?php 
-
-include "_server.php";
-$conn = mysqli_connect($servername, $user, $pass, $database);
-$id = $_GET['id'];
-
+<?php
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    $query = "SELECT * FROM business";
-    $result = mysqli_query($conn, $query);
-    if(mysqli_num_rows($result) == 1) {
-    $row = mysqli_fetch_array($result);
-  }
 }
-
-mysqli_close($conn);
-
 ?>
 
 <!DOCTYPE HTML>
@@ -24,7 +11,7 @@ mysqli_close($conn);
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<title>Añadir producto</title>
+<title>AppKit Mobile</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -56,55 +43,49 @@ mysqli_close($conn);
     </div>
     
     <div class="page-title page-title-fixed">
-        <h1>Quickzone®</h1>
+        <h1>Inputs</h1>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i class="fa fa-share-alt"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i class="fa fa-moon"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i class="fa fa-lightbulb color-yellow-dark"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-main"><i class="fa fa-bars"></i></a>
     </div>
-
-    <!--   Banner   --> 
-
-    <div class="page-title-clear">
-
-    </div>
-        <div class="card card-style">
-            <div class="content mb-0">      
-                <!-- Formulario -->
-                <form action="_add.php" method="post">
-                <!-- Nombre del Producto -->
+    <div class="page-title-clear"></div>
+        
+    <div class="page-content">
+    <div class="card card-style">
+            <div class="content mb-0">        
+                <br><h3>Por favor, llena los campos</h3>
+                <form action="_add.php" method="POST">
                 <input type="hidden" value="<?php echo $_GET['id'];?>" name="nameID">
-                <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="productName" id="productName" placeholder= "Nombre del producto">
-                    <label for="form1" class="color-highlight">Nombre del Producto</label>
+                <div class="input-style has-borders has-icon validate-field mb-4">
+                    <input type="name" class="form-control validate-name" name="productName" placeholder="Nombre del Producto">
+                    <label for="form1" class="color-highlight"></label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <!-- Email  -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="price" id="price" placeholder="Precio del producto Ejemplo: '$12.99'">
-                    <label for="form2" class="color-highlight">Precio del producto Ejemplo: "$12.99"</label>
+                    <input type="text" class="form-control validate-text" name="price" placeholder="Precio Ejemplo: $12.00">
+                    <label for="form2" class="color-highlight">Precio</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <!-- Link de imagen  -->
                 <textarea id="descript" style="width: 100%;" name="descript" placeholder="Descripcion del producto"></textarea>
                     <em class="mt-n6">(required)</em>
-                <!--  Direccion -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="linkImage" id="linkImage" placeholder="Link de imagen">
-                    <label for="form3" class="color-highlight">Link de la imagen</label>
+                    <input type="url" class="form-control validate-text" name="linkImage" placeholder="Link de Imagen">
+                    <label for="form3" class="color-highlight">Link del Logo</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <input style="width: 100%;" type="submit" placeholder="Guardar" class="btn btn-m btn-full mb-3 rounded-xs text-uppercase font-700 shadow-s bg-orange-light">
-                </form>
+                <input style="width: 100%;" type="submit" value="Editar" placeholder="Guardar" class="btn btn-m btn-full mb-3 rounded-xs text-uppercase font-700 shadow-s bg-orange-light">
+                <form>
             </div>
         </div>
-        
+
+        <div data-menu-load="menu-footer.html"></div>
     </div>
     <!-- Page content ends here-->
     
@@ -117,58 +98,7 @@ mysqli_close($conn);
     <!-- Colors Menu-->
     <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-load="menu-colors.html" data-menu-height="480"></div> 
      
-</div>
-
-<div class="card card-style">
-    <div class="content">
-        <h1 class="font-24 font-800 mb-0">Carga tu producto</h1>
-         <div class="d-flex mb-4">
-            <div class="align-self-center">
-                <img src="images/food/small/1s.jpg" class="rounded-m me-3" width="80">
-            </div>
-            <div class="align-self-center">
-                <h2 class="font-15 line-height-s mt-1 mb-n1">Cheesy Hamburger <br> with Bacon and Ham</h2>
-                <p class="mb-0 font-11 mt-2 line-height-s">
-                    <i class="fa fa-truck color-brown-dark pe-2"></i>Ready in 20 Minutes
-                </p>
-            </div>
-            <div class="ms-auto ps-3 align-self-center text-center">
-                <h2 class="font-18 mb-n2">$14.75</h2>
-                <span class="color-highlight font-9">per serving</span>
-            </div>
-        </div>
-        <div class="d-flex mb-4">
-            <div class="align-self-center">
-                <img src="images/food/small/8s.jpg" class="rounded-m me-3" width="80">
-            </div>
-            <div class="align-self-center">
-                <h2 class="font-15 line-height-s mt-1 mb-n1">Chicken Crispy <br> Strips with Fries</h2>
-                <p class="mb-0 font-11 mt-2 line-height-s">
-                    <i class="fa fa-truck color-brown-dark pe-2"></i>Ready in 25 Minutes
-                </p>
-            </div>
-            <div class="ms-auto ps-3 align-self-center text-center">
-                <h2 class="font-18 mb-n2">$23.44</h2>
-                <span class="color-highlight font-9">per serving</span>
-            </div>
-        </div>
-        <div class="d-flex mb-4">
-            <div class="align-self-center">
-                <img src="images/food/small/8s.jpg" class="rounded-m me-3" width="80">
-            </div>
-            <div class="align-self-center">
-                <h2 class="font-15 line-height-s mt-1 mb-n1">Chicken Crispy <br> Strips with Fries</h2>
-                <p class="mb-0 font-11 mt-2 line-height-s">
-                    <i class="fa fa-truck color-brown-dark pe-2"></i>Ready in 25 Minutes
-                </p>
-            </div>
-            <div class="ms-auto ps-3 align-self-center text-center">
-                <h2 class="font-18 mb-n2">$23.44</h2>
-                <span class="color-highlight font-9">per serving</span>
-            </div>
-        </div>
-    </div>
-    <div data-menu-load="menu-footer.html"></div>
+    
 </div>
 
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>

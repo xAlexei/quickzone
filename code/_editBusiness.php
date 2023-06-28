@@ -1,70 +1,14 @@
 <?php
 
 include "_server.php";
-
 $conn = mysqli_connect($servername, $user, $pass, $database);
-
-$businessName = '';
-$email = '';
-$businessLogo = '';
-$address = '';
-$phone = '';
-$whatsApp = '';
-$line = '';
-$googleLink = '';
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    $query = "SELECT * FROM business WHERE _id=$id";
-    $result = mysqli_query($conn, $query);
-    try {
-        if(mysqli_fetch_array($result) == 1){
-             $row = mysqli_fetch_array($result);
-        }
-    } catch (\Throwable $th) {
-        //throw $th;
-    }
 }
 
-if (isset($_POST['update'])) {
-    $id = $_GET['id'];
-    $businessName = $_POST['name'];
-    $email = $_POST['email'];
-    $businessLogo = $_POST['logo'];
-    $address = $_POST['address'];
-    $phone = $_POST['phone'];
-    $whatsApp = $_POST['whats'];
-    $line = $_POST['line'];
-    $googleLink = $_POST['googleLink'];
-     try {
-    $query = "UPDATE business set 
-    businessName = '$businessName', 
-    email = '$email',
-    businessLogo = '$businessLogo',
-    businessAddress = '$address',
-    phone = '$phone',
-    whatsApp = '$whatsApp',
-    typeOf = '$line',
-    googleLink = '$googleLink' WHERE _id=$id";
-    mysqli_query($conn, $query);
-    
-    echo "<script>alert('Actualizado')</script>";
-     } catch (\Throwable $th) {
-        //throw $th;
-     }
-  
-    
-  }
-
-  $query2 = "SELECT * FROM business b INNER JOIN products p ON p.businessNameID = b._id WHERE b._id = $id";
-  try {
-    $res2 = mysqli_query($conn, $query2) or die( mysqli_error($conn));
-  } catch (\Throwable $th) {
-    //throw $th;
-  }
-  
-
 ?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -72,7 +16,7 @@ if (isset($_POST['update'])) {
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<title>Editar Negocio</title>
+<title>AppKit Mobile</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -104,93 +48,113 @@ if (isset($_POST['update'])) {
     </div>
     
     <div class="page-title page-title-fixed">
-        <h1>Quickzone®</h1>
+        <h1>Quickzone</h1>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i class="fa fa-share-alt"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i class="fa fa-moon"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i class="fa fa-lightbulb color-yellow-dark"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-main"><i class="fa fa-bars"></i></a>
     </div>
-
-    <!--   Banner   --> 
-    <div class="page-title-clear">
-
-    </div>
+    <div class="page-title-clear"></div>
+        
+    <div class="page-content">
         <div class="card card-style">
-            <div class="content mb-0">      
-                <!-- Formulario -->
-                <form action='_editBusiness.php?id=<?php echo $_GET['id'];?>' method="post">
-                <!-- Nombre del negocio -->
-                <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="name" id="name"  value="<?php echo $businessName; ?>" placeholder="Nombre del negocio ">
-                    <label for="form1" class="color-highlight">Nombre del Negocio</label>
+            <div class="content mb-0">        
+                <br><h3>Por favor, llena los campos</h3>
+                <form action="_edit.php?id=<?php echo $id;?>" method="POST">
+                <div class="input-style has-borders has-icon validate-field mb-4">
+                    <i class="fa fa-user"></i>
+                    <input type="name" class="form-control validate-name" name="name" placeholder="Nombre del Negocio">
+                    <label for="form1" class="color-highlight">Name</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <!-- Email  -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="email" class="form-control validate-text" name="email" id="email"  value="<?php echo $email; ?>" placeholder="Correo Electronico">
-                    <label for="form2" class="color-highlight">Correo Electronico</label>
+                    <input type="email" class="form-control validate-text" name="email" placeholder="Email">
+                    <label for="form2" class="color-highlight">Email</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <!-- Link de imagen  -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="logo"  value="<?php echo $businessLogo; ?>"  id="logo" placeholder="Link de imagen">
-                    <label for="form2" class="color-highlight">Business Logo</label>
+                    <input type="url" class="form-control validate-text" name="logo" placeholder="Link del Logo">
+                    <label for="form3" class="color-highlight">Link del Logo</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <!--  Direccion -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="address"  value="<?php echo $address; ?>" id="address" placeholder="Direccion">
-                    <label for="form3" class="color-highlight">Direccion</label>
+                    <input type="text" class="form-control validate-text" name="address" placeholder="Direccion">
+                    <label for="form44" class="color-highlight">Direccion</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <!-- Telefono y Whatsapp  -->
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                   <div class="input-group">
-                       <input type="tel" class="form-control validate-text" name="phone"  value="<?php echo $phone; ?>" id="phone" placeholder="Telefono">
-                       <input type="tel" class="form-control validate-text" name="whats"  value="<?php echo $whatsApp; ?>" id="whats" placeholder="WhatsApp">
+                <div class="input-group">
+                       <input type="text" class="form-control validate-text" name="phone" placeholder="Telefono">
+                       <input type="text" class="form-control validate-text" name="whats" placeholder="WhatsApp">
                        <em>(required)</em>
                    </div>
                 </div>
-                <div class="col-12">
-                    <div class="input-style input-style-always-active has-borders no-icon mb-4">
-                        <label for="form51" class="color-highlight"></label>
-                        <select id="line" name="line">
-                            <option value="<?php echo $line; ?>"> Elige una opcion</option>
-                            <option  value="Carpinteria" >Carpinteria</option>
-                            <option  value="Lavanderia">Lavanderia</option>
-                            <option  value="Taxi">Servicios de taxi</option>
-                            <option  value="Restaurantes">Restaurantes</option>
-                            <option  value="Farmacias">Farmacias</option>
-                            <option  value="Tiendas">Tiendas de conveniencia</option>
-                            <option  value="Inmobiliarias">Inmobiliarias</option>            
-                        </select>
-                        <span><i class="fa fa-chevron-down"></i></span>
-                    </div>
+
+                <div class="input-style has-borders no-icon mb-4">
+                    <label for="form5" class="color-highlight">Select A Value</label>
+                    <select name="line">
+                        <option value="default" disabled selected>Select a Value</option>
+                        <option value="Restaurantes">Restaurantes</option>
+                        <option value="Farmacias">Farmacias</option>
+                        <option value="Carpinteria">Carpinterias</option>
+                        <option value="Lavanderia">Lavanderias</option>
+                        <option value="Taxi">Servicio de Taxi</option>
+                        <option value="Tiendas">Tiendas de conveniencia</option>
+                        <option value="Inmobiliarias">Inmobiliarias</option>
+                    </select>
+                    <span><i class="fa fa-chevron-down"></i></span>
+                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                    <i class="fa fa-check disabled invalid color-red-dark"></i>
+                    <em></em>
                 </div>
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="googleLink" <?php echo $line; ?> id="googleLink" placeholder="Ubicacion de google">
-                    <label for="form3" class="color-highlight">Google Link</label>
+                    <input type="url" class="form-control validate-text" name="googleLink" placeholder="Ubicacion">
+                    <label for="form44" class="color-highlight">Ubicacion</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <button style="width: 100%;" class="btn btn-m btn-full mb-3 rounded-xs text-uppercase font-700 shadow-s bg-orange-light" name="update">
-          Update
-</button>
-                </form>
+                <input style="width: 100%;" type="submit" value="Editar" placeholder="Guardar" class="btn btn-m btn-full mb-3 rounded-xs text-uppercase font-700 shadow-s bg-orange-light">
+                <form>
             </div>
         </div>
-        
+        <div class="card card-full-left card-style">
+            <div class="content">
+            <a href="_addProduct.php?id=<?php echo $id ?>" name="id">
+                <h1 class="font-24 font-800 mb-0">Añadir mas Productos
+                <i class="fa-solid fa-square-plus" style="padding-left: 90px;color: #e7820d;"></i>
+                </h1></a>
+            <?php 
+                $query = "SELECT * FROM products WHERE businessNameID = $id";
+                $res = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_assoc($res)): ?>
+
+                <br><div class="d-flex">
+                    <div class="me-3">
+                        <img width="120" class="fluid-img rounded-m shadow-xl" src="<?php echo $row['linkImage'];?>">
+                    </div>
+                    <div>
+                        <p class="color-highlight font-20 mb-n1"><?php echo $row['productName'];?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Precio:<?php echo $row['price']; ?> MXN.</p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Descripcion: <?php echo $row['descript']; ?></p>
+                        <br><a href="_editBusiness.php?id=<?php echo $id;?>" class="btn btn-sm rounded-s font-13 font-600 bg-orange-light">Editar</a>
+                    </div>
+                </div>
+                <div class="divider mt-4"></div>
+                <?php endwhile;?>
+            </div>
+        </div>
     </div>
     <!-- Page content ends here-->
+    
     
     <!-- Main Menu--> 
     <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-load="menu-main.html" data-menu-width="280" data-menu-active="nav-components"></div>
@@ -201,38 +165,9 @@ if (isset($_POST['update'])) {
     <!-- Colors Menu-->
     <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-load="menu-colors.html" data-menu-height="480"></div> 
      
+    
 </div>
-<div class="page-content">
-        <!-- Servicios de Taxi -->
-       
-        <div class="card card-style">
-            <div class="content">
-                <a href="_addProduct.php?id=<?php echo $_GET['id']; ?>" name="id">
-                <h1 class="font-24 font-800 mb-0">Añadir mas Productos
-                <i class="fa-sharp fa-solid fa-plus" style="padding-left: auto;color: #e7820d;"></i>
-                </h1></a>
-                <p>
-                    Administre de manera rapida los negocios registrados
-                </p>
-                <?php $i=0; while($row2 = mysqli_fetch_array($res2)){ $i++; ?>
-                <div class='d-flex mb-4'>
-                    <div class='align-self-center'>
-                        <img src="<?php echo $row2['linkImage'] ?>" class='rounded-m me-3' width='80'>
-                     </div>
-                <div class='align-self-center'>
-                    <h2 class='font-15 line-height-s mt-1 mb-n1'><?php echo $row2['productName'];?></h2>
-                        <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row2['descript']?></p>
-                        <p class='mb-0 font-11 mt-2 line-height-s'><?php echo $row2['price']?></p>
-                </div>
-                    <div class='ms-auto ps-3 align-self-center text-center'>
-                        <a href=""><i style='font-size: 35px;' class='uil uil-edit'></i></a>
-                    </div>
-                </div>
-            </div>
-            <?php }?>
-        </div>
 
-    </div>
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
 </body>

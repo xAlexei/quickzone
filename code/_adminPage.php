@@ -33,7 +33,7 @@
 
 
     <div id="footer-bar" class="footer-bar-6">
-        <a href="index-components.html"><i class="fa fa-layer-group"></i><span>Features</span></a>
+        <a href="_editBusiness.php?id=<?php echo $row['_id'];?>"><i class="fa fa-layer-group"></i><span>Features</span></a>
         <a href="index-pages.html"><i class="fa fa-file"></i><span>Pages</span></a>
         <a href="index.html" class="circle-nav active-nav"><i class="fa fa-home"></i><span>Welcome</span></a>
         <a href="index-projects.html"><i class="fa fa-image"></i><span>Projects</span></a>
@@ -54,272 +54,222 @@
     <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-load="menu-colors.html" data-menu-height="480"></div>
 
 
+
     <div class="page-content">
         <!-- Servicios de Taxi -->
-       
-         <div class="card card-style">
+        <div class="card card-full-left card-style">
             <div class="content">
-                <p class="mb-n1 color-highlight font-600">Lista de</p>
-                <h1 class="font-24 font-800 mb-0">Servicios de taxi</h1>
-                <p>
-                    Administre de manera rapida los negocios registrados
-                </p>
-    <?php 
-    include "_server.php";
-    $conn = mysqli_connect($servername, $user, $pass, $database);
+            <h2>Servicios de Taxi</h2>
+            <?php 
+             include "_server.php";
+                $conn = mysqli_connect($servername, $user, $pass, $database);
+                $query = "SELECT * FROM business WHERE typeOf = 'Taxi'";
+                $res = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_assoc($res)): ?>
 
-    $query = "SELECT * FROM business where typeOf='Taxi'";
-    $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
-        
-        echo "<div class='d-flex mb-4'>
-        <div class='align-self-center'>
-            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+                <br><div class="d-flex">
+                    <div class="me-3">
+                        <img width="120" class="fluid-img rounded-m shadow-xl" src="<?php echo $row['businessLogo'];?>">
+                    </div>
+                    <div>
+                        <p class="color-highlight font-20 mb-n1"><?php echo $row['businessName'];?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Correo:<?php echo $row['email']; ?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Direccion:<?php echo $row['businessAddress']; ?></p>
+                        <br><a href="_editBusiness.php?id=<?php echo $row['_id'];?>" class="btn btn-sm rounded-s font-13 font-600 bg-orange-light">Editar</a>
+                    </div>
+                </div>
+                <div class="divider mt-4"></div>
+                <?php endwhile;?>
+            </div>
         </div>
-        <div class='align-self-center'>
-            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
-        </div>
-        <div class='ms-auto ps-3 align-self-center text-center'>
-        <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
-        <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
-        </div>
-    </div>";?>
     </div>
-        </div>
-        <?php }?>
-         <div class="card card-style">
+
+    <!-- Restaurantes -->
+     
+    <div class="page-content" style="margin-top: -70px" >
+        <div class="card card-full-left card-style" >
             <div class="content">
-                <p class="mb-n1 color-highlight font-600">Lista de</p>
-                <h1 class="font-24 font-800 mb-0">Caripenterias</h1>
-                <p>
-                    Administre de manera rapida los negocios registrados
-                </p>
-    <?php 
-    include "_server.php";
-    $conn = mysqli_connect($servername, $user, $pass, $database);
-
-    $query = "SELECT * FROM business where typeOf='Carpinteria'";
-    $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
-        
-        echo "<div class='d-flex mb-4'>
-        <div class='align-self-center'>
-            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
-        </div>
-        <div class='align-self-center'>
-            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['email']."</p>
-            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
-        </div>
-        <div class='ms-auto ps-3 align-self-center text-center'>
-       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
-       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
-        </div>
-    </div>";
-    }?>
-
-    </div>
+            <h2>Restaurantes</h2>
+            <?php 
     
-        </div>
-        <!-- Servicios de Lavanderias -->
-         <div class="card card-style">
-            <div class="content">
-                <p class="mb-n1 color-highlight font-600">Lista de</p>
-                <h1 class="font-24 font-800 mb-0">Lavanderias</h1>
-                <p>
-                    Administre de manera rapida los negocios registrados
-                </p>
-    <?php 
-    include "_server.php";
-    $conn = mysqli_connect($servername, $user, $pass, $database);
+             include "_server.php";
+                $conn = mysqli_connect($servername, $user, $pass, $database);
+                $query = "SELECT * FROM business WHERE typeOf = 'Restaurantes'";
+                $res = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_assoc($res)){ ?>
 
-    $query = "SELECT * FROM business where typeOf='Lavanderia'";
-    $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
-        
-        echo "<div class='d-flex mb-4'>
-        <div class='align-self-center'>
-            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
-        </div>
-        <div class='align-self-center'>
-            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
-        </div>
-        <div class='ms-auto ps-3 align-self-center text-center'>
-       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
-       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
-        </div>
-    </div>";
-    }
-  mysqli_close($conn);
-
-      ?>
-    </div>
-    <!-- Servicios de Restaurantes -->
-        </div>
-        <div class="card card-style">
-            <div class="content">
-                <p class="mb-n1 color-highlight font-600">Lista de</p>
-                <h1 class="font-24 font-800 mb-0">Restaurantes</h1>
-                <p>
-                    Administre de manera rapida los negocios registrados
-                </p>
-    <?php 
-    include "_server.php";
-    $conn = mysqli_connect($servername, $user, $pass, $database);
-
-    $query = "SELECT * FROM business where typeOf='Restaurantes'";
-    $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
-        
-        echo "<div class='d-flex mb-4'>
-        <div class='align-self-center'>
-            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
-        </div>
-        <div class='align-self-center'>
-            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
-             </div>
-             <div class='ms-auto ps-3 align-self-center text-center'>
-            <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
-            <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
-             </div>
-         </div>";
-         }
-         mysqli_close($conn);
-
-         ?>
-
+                <br><div class="d-flex">
+                    <div class="me-3">
+                        <img width="120" class="fluid-img rounded-m shadow-xl" src="<?php echo $row['businessLogo'];?>">
+                    </div>
+                    <div>
+                        <p class="color-highlight font-20 mb-n1"><?php echo $row['businessName'];?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Correo:<?php echo $row['email']; ?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Direccion:<?php echo $row['businessAddress']; ?></p>
+                        <br><a href="_editBusiness.php?id=<?php echo $row['_id'];?>" class="btn btn-sm rounded-s font-13 font-600 bg-orange-light">Editar</a>
+                    </div>
+                </div>
+                <div class="divider mt-4"></div>
+                <?php }?>
             </div>
         </div>
-        <!-- Farmacias -->
-        <div class="card card-style">
-            <div class="content">
-                <p class="mb-n1 color-highlight font-600">Lista de</p>
-                <h1 class="font-24 font-800 mb-0">Farmacias</h1>
-                <p>
-                    Administre de manera rapida los negocios registrados
-                </p>
-    <?php 
-    include "_server.php";
-    $conn = mysqli_connect($servername, $user, $pass, $database);
-
-    $query = "SELECT * FROM business where typeOf='Farmacias'";
-    $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
-        
-        echo "<div class='d-flex mb-4'>
-        <div class='align-self-center'>
-            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
-        </div>
-        <div class='align-self-center'>
-            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>  
-            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
-        </div>
-        <div class='ms-auto ps-3 align-self-center text-center'>
-       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
-       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
-        </div>
-    </div>";
-    }
-  mysqli_close($conn);
-
-      ?>
     </div>
-        </div>
-        <!-- Inmobiliarias -->
-        <div class="card card-style">
+
+    <!-- Tiendas de conveniencia -->
+
+     
+    <div class="page-content" style="margin-top: -70px" >
+        <div class="card card-full-left card-style" >
             <div class="content">
-                <p class="mb-n1 color-highlight font-600">Lista de</p>
-                <h1 class="font-24 font-800 mb-0">Inmobiliarias</h1>
-                <p>
-                    Administre de manera rapida los negocios registrados
-                </p>
-    <?php 
-    include "_server.php";
-    $conn = mysqli_connect($servername, $user, $pass, $database);
+            <h2>Tiendas de conveniencia</h2>
+            <?php 
+    
+             include "_server.php";
+                $conn = mysqli_connect($servername, $user, $pass, $database);
+                $query = "SELECT * FROM business WHERE typeOf = 'Tiendas'";
+                $res = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_assoc($res)): ?>
 
-    $query = "SELECT * FROM business where typeOf='Inmobiliarias'";
-    $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
-        
-        echo "<div class='d-flex mb-4'>
-        <div class='align-self-center'>
-            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
-        </div>
-        <div class='align-self-center'>
-            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
-             </div>
-             <div class='ms-auto ps-3 align-self-center text-center'>
-            <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
-            <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
-             </div>
-         </div>";
-         }
-         mysqli_close($conn);
-
-         ?>
-
+                <br><div class="d-flex">
+                    <div class="me-3">
+                        <img width="120" class="fluid-img rounded-m shadow-xl" src="<?php echo $row['businessLogo'];?>">
+                    </div>
+                    <div>
+                        <p class="color-highlight font-20 mb-n1"><?php echo $row['businessName'];?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Correo:<?php echo $row['email']; ?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Direccion:<?php echo $row['businessAddress']; ?></p>
+                        <br><a href="_editBusiness.php?id=<?php echo $row['_id'];?>" class="btn btn-sm rounded-s font-13 font-600 bg-orange-light">Editar</a>
+                    </div>
+                </div>
+                <div class="divider mt-4"></div>
+                <?php endwhile;?>
             </div>
         </div>
-        <!--Tiendas de conveniencia-->
-        <div class="card card-style">
+    </div>
+
+    <!-- Lavanderias -->
+     
+    <div class="page-content" style="margin-top: -70px" >
+        <div class="card card-full-left card-style" >
             <div class="content">
-                <p class="mb-n1 color-highlight font-600">Lista de</p>
-                <h1 class="font-24 font-800 mb-0">Tiendas de Conveniencia</h1>
-                <p>
-                    Administre de manera rapida los negocios registrados
-                </p>
-    <?php 
-    include "_server.php";
-    $conn = mysqli_connect($servername, $user, $pass, $database);
+            <h2>Lavanderias</h2>
+            <?php 
+    
+             include "_server.php";
+                $conn = mysqli_connect($servername, $user, $pass, $database);
+                $query = "SELECT * FROM business WHERE typeOf = 'Lavanderia'";
+                $res = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_assoc($res)): ?>
 
-    $query = "SELECT * FROM business where typeOf='Tiendas'";
-    $res = mysqli_query($conn, $query);
-    while($row = mysqli_fetch_array($res)){  
-        
-        echo "<div class='d-flex mb-4'>
-        <div class='align-self-center'>
-            <img src='".$row['businessLogo']."' class='rounded-m me-3' width='80'>
+                <br><div class="d-flex">
+                    <div class="me-3">
+                        <img width="120" class="fluid-img rounded-m shadow-xl" src="<?php echo $row['businessLogo'];?>">
+                    </div>
+                    <div>
+                        <p class="color-highlight font-20 mb-n1"><?php echo $row['businessName'];?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Correo:<?php echo $row['email']; ?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Direccion:<?php echo $row['businessAddress']; ?></p>
+                        <br><a href="_editBusiness.php?id=<?php echo $row['_id'];?>" class="btn btn-sm rounded-s font-13 font-600 bg-orange-light">Editar</a>
+                    </div>
+                </div>
+                <div class="divider mt-4"></div>
+                <?php endwhile;?>
+            </div>
         </div>
-        <div class='align-self-center'>
-            <h2 class='font-15 line-height-s mt-1 mb-n1'>".$row['businessName']."</h2>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Direccion: ".$row['businessAddress']."</p>
-            <p class='mb-0 font-11 mt-2 line-height-s'>Telefono: ".$row['phone']."</p>
-            <a href='_detailBusiness.php?id=".$row['_id']."' class='btn btn-sm rounded-s font-13 font-600 bg-orange-light'>Detalles</a>
-        </div>
-        <div class='ms-auto ps-3 align-self-center text-center'>
-       <a href='_editBusiness.php?id=".$row['_id']."'><i style='font-size: 20px;' class='uil uil-edit'></i></a>
-       <br><a href='_deleteBusiness.php?id=".$row['_id']."'><i class='fa-solid fa-trash' style='color: #d51010;font-size: 20px;'></i></a>
-        </div>
-    </div>";
-    }
-  mysqli_close($conn);
-
-      ?>
     </div>
+
+    <!-- Farmacias -->
+
+    <div class="page-content" style="margin-top: -70px" >
+        <div class="card card-full-left card-style" >
+            <div class="content">
+            <h2>Farmacias</h2>
+            <?php 
+    
+             include "_server.php";
+                $conn = mysqli_connect($servername, $user, $pass, $database);
+                $query = "SELECT * FROM business WHERE typeOf = 'Farmacias'";
+                $res = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_assoc($res)): ?>
+
+                <br><div class="d-flex">
+                    <div class="me-3">
+                        <img width="120" class="fluid-img rounded-m shadow-xl" src="<?php echo $row['businessLogo'];?>">
+                    </div>
+                    <div>
+                        <p class="color-highlight font-20 mb-n1"><?php echo $row['businessName'];?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Correo:<?php echo $row['email']; ?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Direccion:<?php echo $row['businessAddress']; ?></p>
+                        <br><a href="_editBusiness.php?id=<?php echo $row['_id'];?>" class="btn btn-sm rounded-s font-13 font-600 bg-orange-light">Editar</a>
+                    </div>
+                </div>
+                <div class="divider mt-4"></div>
+                <?php endwhile;?>
+            </div>
         </div>
-
     </div>
-    <!-- Neogcios de lavaderia -->
-         
 
-    <!-- End of Page Content-->
-    <!-- All Menus, Action Sheets, Modals, Notifications, Toasts, Snackbars get Placed outside the <div class="page-content"> -->
+    <!-- Carpinterias -->
+
+    <div class="page-content" style="margin-top: -70px" >
+        <div class="card card-full-left card-style" >
+            <div class="content">
+            <h2>Caprinterias</h2>
+            <?php 
+    
+             include "_server.php";
+                $conn = mysqli_connect($servername, $user, $pass, $database);
+                $query = "SELECT * FROM business WHERE typeOf = 'Carpinteria'";
+                $res = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_assoc($res)): ?>
+
+                <br><div class="d-flex">
+                    <div class="me-3">
+                        <img width="120" class="fluid-img rounded-m shadow-xl" src="<?php echo $row['businessLogo'];?>">
+                    </div>
+                    <div>
+                        <p class="color-highlight font-20 mb-n1"><?php echo $row['businessName'];?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Correo:<?php echo $row['email']; ?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Direccion:<?php echo $row['businessAddress']; ?></p>
+                        <br><a href="_editBusiness.php?id=<?php echo $row['_id'];?>" class="btn btn-sm rounded-s font-13 font-600 bg-orange-light">Editar</a>
+                    </div>
+                </div>
+                <div class="divider mt-4"></div>
+                <?php endwhile;?>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inmobiliarias -->
+
+    <div class="page-content" style="margin-top: -70px" >
+        <div class="card card-full-left card-style" >
+            <div class="content">
+            <h2>Inmobiliarias</h2>
+            <?php 
+    
+             include "_server.php";
+                $conn = mysqli_connect($servername, $user, $pass, $database);
+                $query = "SELECT * FROM business WHERE typeOf = 'Inmobiliaria'";
+                $res = mysqli_query($conn, $query);
+                while($row = mysqli_fetch_assoc($res)): ?>
+
+                <br><div class="d-flex">
+                    <div class="me-3">
+                        <img width="120" class="fluid-img rounded-m shadow-xl" src="<?php echo $row['businessLogo'];?>">
+                    </div>
+                    <div>
+                        <p class="color-highlight font-20 mb-n1"><?php echo $row['businessName'];?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Correo:<?php echo $row['email']; ?></p>
+                        <p class='mb-0 font-15 mt-2 line-height-s'>Direccion:<?php echo $row['businessAddress']; ?></p>
+                        <br><a href="_editBusiness.php?id=<?php echo $row['_id'];?>" class="btn btn-sm rounded-s font-13 font-600 bg-orange-light">Editar</a>
+                    </div>
+                </div>
+                <div class="divider mt-4"></div>
+                <?php endwhile; mysqli_close($conn);?>
+            </div>
+        </div>
+    </div>
 
     <!-- Menu Share -->
     <div id="menu-share" class="menu menu-box-bottom menu-box-detached">
