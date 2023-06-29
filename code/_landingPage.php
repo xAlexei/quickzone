@@ -63,118 +63,39 @@ $query2 = "SELECT * FROM business WHERE typeOf ''";
             </div>   
             <div class="search-results disabled-search-list">
                 <div>
-                    <a href="#" data-filter-item data-filter-name="all food burger cheese ham bacon">
-                        <div class="d-flex mt-4">
-                            <div class="align-self-center">
-                                <img src="images/avatars/10l.png" class="rounded-m me-3" width="80">
-                            </div>
-                            <div class="align-self-center">
-                                <h2 class="font-15 line-height-s mt-1 mb-n1">Cheesy Hamburger <br> with Bacon and Ham</h2>
-                                <p class="mb-0 font-11 mt-2 line-height-s">
-                                    <i class="fa fa-truck color-brown-dark pe-2"></i>Ready in 20 Minutes
-                                </p>
-                            </div>
-                            <div class="ms-auto ps-3 align-self-center text-center">
-                                <h2 class="font-18 mb-n2">$14.75</h2>
-                                <span class="color-highlight font-9">per serving</span>
-                            </div>
-                        </div>
-                    </a>          
-                    <a href="#" data-filter-item data-filter-name="all food fries chicken breast fried">
-                        <div class="d-flex mt-4">
-                            <div class="align-self-center">
-                                <img src="images/food/pizza.png" class="rounded-m me-3" width="80">
-                            </div>
-                            <div class="align-self-center">
-                                <h2 class="font-15 line-height-s mt-1 mb-n1">Chicken Crispy <br> Strips with Fries</h2>
-                                <p class="mb-0 font-11 mt-2 line-height-s">
-                                    <i class="fa fa-truck color-brown-dark pe-2"></i>Ready in 25 Minutes
-                                </p>
-                            </div>
-                            <div class="ms-auto ps-3 align-self-center text-center">
-                                <h2 class="font-18 mb-n2">$23.44</h2>
-                                <span class="color-highlight font-9">per serving</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" data-filter-item data-filter-name="all food pizza special house">
-                        <div class="d-flex mt-4">
-                            <div class="align-self-center">
-                                <img src="images/products/pizza.jpg" class="rounded-m me-3" width="80">
-                            </div>
-                            <div class="align-self-center">
-                                <h2 class="font-15 line-height-s mt-1 mb-n1">House Special <br> Classic Crust Pizza</h2>
-                                <p class="mb-0 font-11 mt-2 line-height-s">
-                                    <i class="fa fa-truck color-brown-dark pe-2"></i>Ready in 43 Minutes
-                                </p>
-                            </div>
-                            <div class="ms-auto align-self-center text-center">
-                                <h2 class="font-18 mb-n2">$17.25</h2>
-                                <span class="color-highlight font-9">per serving</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="search-no-results disabled mt-4">
-            <div class="card card-style">
-                <div class="content">
-                    <h1>No Results</h1>
-                    <p>
-                        Your search brought up no results. Try using a different keyword. Or try typying all 
-                        to see all items in the demo. These can be linked to anything you want.
-                    </p>
+                     
                 </div>
             </div>
         </div>
         
+        <!-- Imagenes -->
         <div class="splide single-slider slider-no-arrows visible-slider slider-no-dots" id="single-slider-1">
             <div class="splide__track">
                 <div class="splide__list">
-                    <?php    ?>
+                    <?php   
+                    $query2 = "SELECT * FROM products LIMIT 4";
+                    $res2 = mysqli_query($conn, $query2);
+                    while($row = mysqli_fetch_array($res2)){
+                     ?>
                     <div class="splide__slide">
-                        <div class="card card-style ms-3" style="background-image:url(images/products/cheesburger.jpg);" data-card-height="300">
+                        <div class="card card-style ms-3" style="background-image:url(<?php echo $row['linkImage']?>);" data-card-height="300">
                             <div class="card-top px-3 py-3">
-                                <a href="#" data-menu="menu-heart" class="bg-white rounded-sm icon icon-xs float-end"><i class="fa fa-heart color-red-dark"></i></a>
-                                <a href="#" class="bg-white color-black rounded-sm btn btn-xs float-start font-700 font-12">$12.99</a>
+                                <a href="#" data-menu="menu-heart" class="bg-white rounded-sm icon icon-xs float-end"></a>
+                                <a href="#" class="bg-white color-black rounded-sm btn btn-xs float-start font-700 font-12"><?php echo $row['price']?></a>
                             </div>
                             <div class="card-bottom px-3 py-3">
-                                <h1 class="color-white">The Ham and Bacon<br>Double Cheeseburger</h1>
+                                <h1 class="color-white"><?php echo $row['productName']?></h1>
                             </div>
                             <div class="card-overlay bg-gradient opacity-30"></div>
                             <div class="card-overlay bg-gradient"></div>
                         </div>
                     </div>
-                    <div class="splide__slide">
-                        <div class="card card-style ms-3" style="background-image:url(https://theglutenfreeaustrian.com/wp-content/uploads/2021/08/gluten-free-chunky-chocolate-walnut-cookie-768x1024.jpg);" data-card-height="300">
-                            <div class="card-top px-3 py-3">
-                                <a href="#" data-menu="menu-heart" class="bg-white rounded-sm icon icon-xs float-end"><i class="fa fa-heart color-red-dark"></i></a>
-                                <a href="#" class="bg-white color-black rounded-sm btn btn-xs float-start font-700 font-12">$12.99</a>
-                            </div>
-                            <div class="card-bottom px-3 py-3">
-                                <h1 class="color-white">House Special<br>Crusted Pizza</h1>
-                            </div>
-                            <div class="card-overlay bg-gradient opacity-30"></div>
-                            <div class="card-overlay bg-gradient"></div>
-                        </div>
-                    </div>
-                    <div class="splide__slide">
-                        <div class="card card-style ms-3" style="background-image:url(images/products/pizza.jpg);" data-card-height="300">
-                            <div class="card-top px-3 py-3">
-                                <a href="#" data-menu="menu-heart" class="bg-white rounded-sm icon icon-xs float-end"><i class="fa fa-heart color-red-dark"></i></a>
-                                <a href="#" class="bg-white color-black rounded-sm btn btn-xs float-start font-700 font-12">$12.99</a>
-                            </div>
-                            <div class="card-bottom px-3 py-3">
-                                <h1 class="color-white">Chocolate Cookies<br>With Wallnut Topping</h1>
-                            </div>
-                            <div class="card-overlay bg-gradient opacity-30"></div>
-                            <div class="card-overlay bg-gradient"></div>
-                        </div>
-                    </div>
+                    <?php }?>
                 </div>
             </div>
         </div>
+
+        <!-- Aqui termina slider del inicio -->
         
         <div class="content mt-0 mb-0">
             <div class="d-flex">

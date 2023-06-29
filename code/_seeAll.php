@@ -65,6 +65,7 @@ $res = mysqli_query($conn, $query);
 
     <div class="page-content">
 
+        <!-- Slider de imagenes -->
         <div class="splide double-slider visible-slider slider-no-dots" id="double-slider-1">
             <div class="splide__track">
                 <div class="splide__list">
@@ -112,6 +113,7 @@ $res = mysqli_query($conn, $query);
                 </div>
             </div>
         </div>
+        <!-- End of slider -->
 
 
         <div class="card card-style shadow-xl">
@@ -173,61 +175,6 @@ $res = mysqli_query($conn, $query);
 
             </div>
         </div>
-
-        <div class="row mb-0">
-            <a href="#" class="col-6 pe-0">
-                <div class="card mr-0 card-style">
-                    <div class="d-flex pt-3 pb-3">
-                        <div class="align-self-center">
-                            <i class="fa fa-home color-green-light ms-3 font-34 mt-1"></i>
-                        </div>
-                        <div class="align-self-center">
-                            <h5 class="ps-2 ms-1 mb-0">PWA <br> Ready</h5>
-                        </div>
-                    </div>
-                    <p class="px-3">
-                        Enjoy AppKit from your Home Screen.
-                    </p>
-                </div>
-            </a>
-            <a href="#" class="col-6 ps-0">
-                <div class="card ml-0 card-style">
-                    <div class="d-flex pt-3 pb-3">
-                        <div class="align-self-center">
-                            <i class="fa fa-cog color-blue-dark ms-3 font-34 mt-1"></i>
-                        </div>
-                        <div class="align-self-center">
-                            <h5 class="ps-2 ms-1 mb-0">Clean<br>Code</h5>
-                        </div>
-                    </div>
-                    <p class="px-3">
-                        Powered by Bootstrap makes your job easier!
-                    </p>
-                </div>
-            </a>
-        </div>
-
-        <a href="#" data-toggle-theme>
-            <div class="card card-style">
-                <div class="d-flex pt-3 mt-1 mb-2 pb-2">
-                    <div class="align-self-center">
-                        <i class="color-icon-gray color-gray-dark font-30 icon-40 text-center fa fa-moon ms-3 show-on-theme-light"></i>
-                        <i class="color-icon-yellow color-yellow-dark font-30 icon-40 text-center fa fa-sun ms-3 show-on-theme-dark"></i>
-                    </div>
-                    <div class="align-self-center">
-                        <p class="ps-2 ms-1 color-highlight font-500 mb-n1 mt-n2">Tap to Enable</p>
-                        <h4 class="show-on-theme-light ps-2 ms-1 mb-0">Dark Mode</h4>
-                        <h4 class="show-on-theme-dark ps-2 ms-1 mb-0">Light Mode</h4>
-                    </div>
-                    <div class="ms-auto align-self-center mt-n2">
-                        <div class="custom-control small-switch ios-switch me-3 mt-n2">
-                            <input data-toggle-theme type="checkbox" class="ios-input" id="toggle-dark-home">
-                            <label class="custom-control-label" for="toggle-dark-home"></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
 
         <div data-menu-load="menu-footer.html"></div>
 

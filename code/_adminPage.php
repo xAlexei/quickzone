@@ -35,7 +35,7 @@
     <div id="footer-bar" class="footer-bar-6">
         <a href="_editBusiness.php?id=<?php echo $row['_id'];?>"><i class="fa fa-layer-group"></i><span>Features</span></a>
         <a href="index-pages.html"><i class="fa fa-file"></i><span>Pages</span></a>
-        <a href="index.html" class="circle-nav active-nav"><i class="fa fa-home"></i><span>Welcome</span></a>
+        <a href="_landingPage.php" class="circle-nav active-nav"><i class="fa fa-home"></i><span>Quickzone</span></a>
         <a href="index-projects.html"><i class="fa fa-image"></i><span>Projects</span></a>
         <a href="#" data-menu="menu-main"><i class="fa fa-bars"></i><span>Menu</span></a>
     </div>
@@ -59,7 +59,11 @@
         <!-- Servicios de Taxi -->
         <div class="card card-full-left card-style">
             <div class="content">
-            <h2>Servicios de Taxi</h2>
+            
+                <h1 class="font-24 font-800 mb-0">Añadir mas Productos
+                <a href="_detailsProduct.php?id=<?php echo $id ?>" name="id">
+                <p class="color-highlight font-20 mb-n1"> Ver todos </p>
+                </h1></a>
             <?php 
              include "_server.php";
                 $conn = mysqli_connect($servername, $user, $pass, $database);

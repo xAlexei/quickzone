@@ -57,9 +57,9 @@ if(isset($_GET['id'])){
                 <br><h3>Por favor, llena los campos</h3>
                 <form action="_add.php" method="POST">
                 <input type="hidden" value="<?php echo $_GET['id'];?>" name="nameID">
-                <div class="input-style has-borders has-icon validate-field mb-4">
-                    <input type="name" class="form-control validate-name" name="productName" placeholder="Nombre del Producto">
-                    <label for="form1" class="color-highlight"></label>
+                <div class="input-style has-borders no-icon validate-field mb-4">
+                    <input type="text" class="form-control validate-text" name="productName" placeholder="Nombre del Producto o Servicio">
+                    <label for="form2" class="color-highlight">Producto o Servicio</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
