@@ -1,7 +1,9 @@
 <?php
 
-include "_server.php";
-$conn = mysqli_connect($servername, $user, $pass, $database);
+session_start();
+
+require_once "_server.php";
+$conn;
 $query = "SELECT * FROM business LIMIT 4";
 $res = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
@@ -69,6 +71,16 @@ $query2 = "SELECT * FROM business WHERE typeOf ''";
         </div>
         
         <!-- Imagenes -->
+        <div class="content mt-0 mb-0">
+            <div class="d-flex">
+                <div class="align-self-center">
+                    <h1 class="mb-0 font-18">Los mas pedidos</h1>
+                </div>
+                <div class="ms-auto align-self-center">
+                    <a href="_seeAll.php" class="float-end font-12 font-400">Ver todos</a>
+                </div>
+            </div>
+        </div>
         <div class="splide single-slider slider-no-arrows visible-slider slider-no-dots" id="single-slider-1">
             <div class="splide__track">
                 <div class="splide__list">
@@ -81,7 +93,7 @@ $query2 = "SELECT * FROM business WHERE typeOf ''";
                         <div class="card card-style ms-3" style="background-image:url(<?php echo $row['linkImage']?>);" data-card-height="300">
                             <div class="card-top px-3 py-3">
                                 <a href="#" data-menu="menu-heart" class="bg-white rounded-sm icon icon-xs float-end"></a>
-                                <a href="#" class="bg-white color-black rounded-sm btn btn-xs float-start font-700 font-12"><?php echo $row['price']?></a>
+                                <a href="#" class="bg-white color-black rounded-sm btn btn-xs float-start font-700 font-12">$<?php echo $row['price']?>.00</a>
                             </div>
                             <div class="card-bottom px-3 py-3">
                                 <h1 class="color-white"><?php echo $row['productName']?></h1>
@@ -149,9 +161,9 @@ $query2 = "SELECT * FROM business WHERE typeOf ''";
                 <div class="col-6 pe-1">
                     <div class="card card-style mx-0" style="background-image:url(images/products/desserts.png);" data-card-height="350">
                         <div class="card-bottom p-3">
-                            <h2 class="color-white">Desserts</h2>
+                            <h2 class="color-white">Restaurantes</h2>
                             <p class="color-white opacity-60 line-height-s">
-                                Chocolate or fruit. Whichever you preffer.
+                                Los mejores restaurantes en la zona
                             </p>
                         </div>
                         <div class="card-overlay bg-gradient opacity-30"></div>
@@ -275,7 +287,7 @@ $query2 = "SELECT * FROM business WHERE typeOf ''";
     </div>
 
     <!-- Main Menu--> 
-    <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-load="menu-main.html" data-menu-width="280" data-menu-active="nav-pages"></div>
+    <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-load="menu-main.php" data-menu-width="280" data-menu-active="nav-pages"></div>
     
     <!-- Share Menu-->
     <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-load="menu-share.html" data-menu-height="370"></div>  

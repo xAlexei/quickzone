@@ -1,21 +1,22 @@
 <?php
 
-include "_server.php";
+require_once "_server.php";
+$conn;
 
-$conn = mysqli_connect($servername, $user, $pass, $database);
-
-$customerID = $_POST['user'];
+$customerID = $_POST['username'];
 $password = $_POST['password'];
 
-$query = "SELECT businessID, pass FROM users WHERE businessID='$customerID' AND pass='$password'";
+$query = "SELECT * FROM users WHERE username='$customerID' AND pass='$password'";
+$res = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($res);
+$typeuser = $row['typeOfUser'];
 
-if($conn->query($query)==TRUE){
-   header('Location: _adminPage.php');
+if($typeuser == 'STAFF'){
+   session_start();
+   $_SESSION['username'];
+   header("Location: _landingPage.php");
+}else{
+   echo "No jala";
 }
-else{
-   echo "<script>alert('Usuario o contraseña incorrectos')";
-   header("Locaition: _businessLogin.html");
-}
-
 
 ?>

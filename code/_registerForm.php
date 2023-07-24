@@ -119,7 +119,9 @@
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
-                <input style="width: 100%;" type="submit" placeholder="Guardar" class="btn btn-m btn-full mb-3 rounded-xs text-uppercase font-700 shadow-s bg-orange-light">
+                <button style="width: 100%;" type="submit" class="btn btn-m btn-full mb-3 font-700 bg-orange-dark rounded">
+                    AÑADIR
+                </button>
                 </form>
             </div>
         </div>
@@ -128,7 +130,7 @@
     <!-- Page content ends here-->
     
     <!-- Main Menu--> 
-    <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-load="menu-main.html" data-menu-width="280" data-menu-active="nav-components"></div>
+    <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-load="menu-main.html" data-menu-width="280" ></div>
     
     <!-- Share Menu-->
     <div id="menu-share" class="menu menu-box-bottom rounded-m" data-menu-load="menu-share.html" data-menu-height="370"></div>  

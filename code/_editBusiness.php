@@ -7,6 +7,9 @@ if(isset($_GET['id'])){
     $id = $_GET['id'];
 }
 
+$query = $conn->query("SELECT * FROM business WHERE _id = '$id'");
+$row = mysqli_fetch_array($query);
+
 ?>
 
 <!DOCTYPE HTML>
@@ -63,14 +66,14 @@ if(isset($_GET['id'])){
                 <form action="_edit.php?id=<?php echo $id;?>" method="POST">
                 <div class="input-style has-borders has-icon validate-field mb-4">
                     <i class="fa fa-user"></i>
-                    <input type="name" class="form-control validate-name" name="name" placeholder="Nombre del Negocio">
+                    <input type="name" class="form-control validate-name" name="name" value="<?php echo $row['businessName']?>">
                     <label for="form1" class="color-highlight">Name</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
                     <em>(required)</em>
                 </div>
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="email" class="form-control validate-text" name="email" placeholder="Email">
+                    <input type="email" class="form-control validate-text" name="email" value="<?php echo $row['email']?>">
                     <label for="form2" class="color-highlight">Email</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -84,7 +87,7 @@ if(isset($_GET['id'])){
                     <em>(required)</em>
                 </div>
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="text" class="form-control validate-text" name="address" placeholder="Direccion">
+                    <input type="text" class="form-control validate-text" name="address" value="<?php echo $row['businessAddress']?>">
                     <label for="form44" class="color-highlight">Direccion</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -92,8 +95,8 @@ if(isset($_GET['id'])){
                 </div>
                 <div class="input-style has-borders no-icon validate-field mb-4">
                 <div class="input-group">
-                       <input type="text" class="form-control validate-text" name="phone" placeholder="Telefono">
-                       <input type="text" class="form-control validate-text" name="whats" placeholder="WhatsApp">
+                       <input type="text" class="form-control validate-text" name="phone" value="<?php echo $row['phone']?>">
+                       <input type="text" class="form-control validate-text" name="whats" value="<?php echo $row['whatsApp']?>">
                        <em>(required)</em>
                    </div>
                 </div>
