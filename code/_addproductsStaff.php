@@ -59,7 +59,7 @@ if(isset($_GET['id'])){
             <div class="content mb-0">        
                 <br><h3>Por favor, llena los campos</h3>
                 <form action="_add.php" method="POST">
-                <input type="hidden" value="<?php echo $_GET['id'];?>" name="nameID">
+                <input type="hidden" value="<?php echo $id;?>" name="nameID">
                 <div class="input-style has-borders no-icon validate-field mb-4">
                     <input type="text" class="form-control validate-text" name="productName" placeholder="Nombre del Producto o Servicio">
                     <label for="form2" class="color-highlight">Producto o Servicio</label>
@@ -68,7 +68,7 @@ if(isset($_GET['id'])){
                     <em>(required)</em>
                 </div>
                 <div class="input-style has-borders no-icon validate-field mb-4">
-                    <input type="number" class="form-control validate-text" name="price" placeholder="Precio Ejemplo: $12.00">
+                    <input type="text" class="form-control validate-text" name="price" placeholder="Precio Ejemplo: $12.00">
                     <label for="form2" class="color-highlight">Precio</label>
                     <i class="fa fa-times disabled invalid color-red-dark"></i>
                     <i class="fa fa-check disabled valid color-green-dark"></i>
@@ -91,6 +91,7 @@ if(isset($_GET['id'])){
                 <form>
             </div>
         </div>
+
         <div data-menu-load="menu-footer.html"></div>
     </div>
     <!-- Page content ends here-->

@@ -1,6 +1,7 @@
 <?php 
 session_start();
 $username = $_SESSION['username'];
+$id = $_SESSION['businessID'];
 ?>
 
 <div class="card rounded-0 bg-6" data-card-height="150" style="background-image: url('images/products/quickzone.png');">
@@ -26,11 +27,6 @@ $username = $_SESSION['username'];
         <span>Perfil</span>
         <i class="fa fa-angle-right"></i>
     </a>
-    <a id="nav-components" href="_registerForm.php">
-        <i class="fa-solid fa-square-plus bg-orange-dark" ></i>
-        <span>Añadir Productos</span>
-        <i class="fa fa-angle-right"></i>
-    </a>
     <a id="nav-pages" href="index-pages.html">
         <i class="fa fa-file bg-orange-dark"></i>
         <span>Pages</span>
@@ -45,6 +41,11 @@ $username = $_SESSION['username'];
         <i class="fa fa-angle-right"></i>
     </a>
     <?php }else{?>
+        <a id="nav-components" href="_addproductsStaff.php">
+        <i class="fa-solid fa-square-plus bg-orange-dark" ></i>
+        <span>Añadir Productos</span>
+        <i class="fa fa-angle-right"></i>
+    </a>
     <a id="nav-contact" href="_logout.php">
         <i class="fa-solid fa-user bg-orange-dark" ></i>
         <span>Cerrar Sesion</span>

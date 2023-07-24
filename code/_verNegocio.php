@@ -5,9 +5,9 @@ if(!isset($_SESSION['username']) && !isset($_SESSION['businessID'])){
     header("Location: _landingPage.php");
 }else{
     $username = $_SESSION['username'];
-    $id = $_SESSION['businessID'];
 }
 
+$id = $_GET['id'];
 
 require_once "_server.php";
 $conn;
@@ -25,7 +25,7 @@ $res = mysqli_fetch_array($query);
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
-<title>AppKit Mobile</title>
+<title>Negocio</title>
 <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="styles/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -36,12 +36,12 @@ $res = mysqli_fetch_array($query);
     
 <body class="theme-light">
     
-<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+<div id="preloader"><div class="spinner-border color-orange-dark" role="status"></div></div>
     
 <div id="page">
     
     <div class="header header-fixed header-logo-center header-auto-show">
-        <a href="index.html" class="header-title">Profile </a>
+        <a href="index.html" class="header-title">Detalles del negocio </a>
         <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-chevron-left"></i></a>
         <a href="#" data-menu="menu-main" class="header-icon header-icon-4"><i class="fas fa-bars"></i></a>
         <a href="#" data-toggle-theme class="header-icon header-icon-3 show-on-theme-dark"><i class="fas fa-sun"></i></a>
@@ -57,17 +57,17 @@ $res = mysqli_fetch_array($query);
     </div>
     
     <div class="page-title page-title-fixed">
-        <h1>Profile</h1>
+        <h1>Detalles</h1>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-share"><i class="fa fa-share-alt"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-light" data-toggle-theme><i class="fa fa-moon"></i></a>
-        <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i class="fa fa-lightbulb color-yellow-dark"></i></a>
+        <a href="#" class="page-title-icon shadow-xl bg-theme color-theme show-on-theme-dark" data-toggle-theme><i class="fa fa-lightbulb color-orange-dark"></i></a>
         <a href="#" class="page-title-icon shadow-xl bg-theme color-theme" data-menu="menu-main"><i class="fa fa-bars"></i></a>
     </div>
     <div class="page-title-clear"></div>
         
     <div class="page-content">
              
-        <div class="card card-style bg-6" data-card-height="450">
+        <div class="card card-style bg-6" data-card-height="250">
             <div class="card-top">
             
             </div>
@@ -83,15 +83,9 @@ $res = mysqli_fetch_array($query);
 
         <div class="card card-style">
             <div class="content mb-0">
-                <p class="mb-n1 color-orange-dark font-600">Lista de Productos</p>
-                <a href="_addproductsStaff.php?id=<?php echo $id;?>">
-                <h1 class="font-24 font-800 mb-0">Carga tu producto
-                <i class="fa-solid fa-square-plus color-yellow-dark" style="padding-left: 20px;"></i>
-                </h1></a>
-                <p>
-                    
-                </p>
-                <?php 
+                <p class="mb-n1 color-orange-dark font-600">Lista de Productos</p>            
+                <h1 class="font-24 font-800 mb-0">Productos</h1>
+                <br><?php 
                 $query = "SELECT * FROM products WHERE businessNameID = '$id'";
                 $res = mysqli_query($conn, $query);
                 while($row = mysqli_fetch_array($res)):
@@ -114,7 +108,6 @@ $res = mysqli_fetch_array($query);
             </div>
         </div>
 
-         <div data-menu-load="menu-footer.html"></div>
     </div>
     <!-- Page content ends here-->
     

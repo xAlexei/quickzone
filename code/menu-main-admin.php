@@ -24,7 +24,7 @@ session_start();
         <span>Negocios publicados</span>
         <i class="fa fa-angle-right"></i>
     </a>
-    <a id="nav-components" href="_registerForm.php">
+    <a id="nav-components" href="_añadirNegocio.php">
         <i class="fa-solid fa-square-plus bg-orange-dark" ></i>
         <span>Nuevo Negocio</span>
         <i class="fa fa-angle-right"></i>

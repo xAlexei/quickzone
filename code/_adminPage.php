@@ -127,7 +127,7 @@
                             <h2 class="font-15 line-height-s mt-1 mb-1"><?php echo $row['businessName']?></h2>
                         </div>
                         <div class="ms-auto ps-3 align-self-center text-center">
-                            <a href="" class="btn btn-m rounded bg-orange-dark font-900 btn-full">Editar</a>
+                        <a href="_editBusiness.php?id=<?php echo $row['_id']?>" class="btn btn-m rounded bg-orange-dark font-900 btn-full">Editar</a>
                         </div>
                     </div>
                     <?php endwhile; ?> 
@@ -151,7 +151,7 @@
                             <h2 class="font-15 line-height-s mt-1 mb-1"><?php echo $row['businessName']?></h2>
                         </div>
                         <div class="ms-auto ps-3 align-self-center text-center">
-                            <a href="" class="btn btn-m rounded bg-orange-dark font-900 btn-full">Editar</a>
+                        <a href="_editBusiness.php?id=<?php echo $row['_id']?>" class="btn btn-m rounded bg-orange-dark font-900 btn-full">Editar</a>
                         </div>
                     </div>
                     <?php endwhile; ?> 

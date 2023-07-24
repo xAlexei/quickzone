@@ -1,13 +1,19 @@
 <?php
 
 session_start();
+if(!isset($_SESSION['username']) && !isset($_SESSION['businessID'])){
+    header("Location: _landingPage.php");
+}else{
+    $username = $_SESSION['username'];
+    $id = $_SESSION['businessID'];
+}
 
 require_once "_server.php";
 $conn;
 $query = "SELECT * FROM business LIMIT 4";
 $res = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
-$query2 = "SELECT * FROM business WHERE typeOf ''";
+
 
 ?>
  <!DOCTYPE HTML>
@@ -58,17 +64,78 @@ $query2 = "SELECT * FROM business WHERE typeOf ''";
     <div class="page-title-clear"></div>
         
     <div class="page-content">            
-        <div class="content mt-n3 mb-4">
-            <div class="search-box search-dark shadow-sm border-0 mt-4 bg-theme rounded-sm bottom-0">
-                <i class="fa fa-search ms-1"></i>
-                <input type="text" class="border-0" placeholder="¿Buscas algo en especial?" data-search>
-            </div>   
-            <div class="search-results disabled-search-list">
-                <div>
-                     
-                </div>
-            </div>
+    <div class="content mt-n3 mb-4">
+            <form method="POST">
+                <div class="search-box search-dark shadow-m border-0 mt-4 bg-theme rounded-m bottom-0">
+                    <i class="fa fa-search ms-1"></i>
+                    <input type="text" name="keyword" class="border-0" placeholder="Buscas algo en especifo?" data-menu="menu-success-2">
+                </div>   
+            </form>
         </div>
+
+        <?php 
+        
+        $aKeyword = explode(" ", $_POST['keyword'] ?? null);
+        if(!isset($_POST['keyword'])){
+            echo "";
+        }else{
+
+        
+
+        $query ="SELECT * FROM business WHERE businessName like '%" . $aKeyword[0] . "%' OR typeOf like '%" . $aKeyword[0] . "%'";
+        
+      
+          
+            
+        ?>
+        <?php 
+             for($i = 1; $i < count($aKeyword); $i++) {
+                if(!empty($aKeyword[$i])) {
+                    echo "";
+                }
+             }
+
+            $result = $conn->query($query);
+            if(mysqli_num_rows($result) > 0) {
+            $row_count=0;
+            While($row = $result->fetch_assoc()) {
+            ?>
+        
+        <div class='card card-style'>      
+                              
+                <div class='d-flex content mb-1'>
+                    <!-- left side of profile -->
+                    <div class='flex-grow-1'>
+                        <h2> <?php echo $row['businessName']?> </h2>
+                        <div class="d-flex mb-n3">
+                    <div>
+                        <p class="mb-0">Dirección: <?php echo $row['businessAddress']?></p>
+                        <p class="mb-0">Télefono: <?php echo $row['phone']?></p>
+                        <p class="mb-0">Correo Electronico: <?php echo $row['email']?></p>
+                        <p class="mb-0">WhatsApp<?php echo $row['whatsApp']?></p>
+                     
+                    </div>
+                </div>
+                    </div>
+                    <!-- right side of profile. increase image width to increase column size-->
+                    <img src='<?php echo $row['businessLogo']?>' width='115' height='103' class='rounded-circle mt-3 shadow-xl'>
+                </div>
+                <!-- follow buttons-->
+                <div class='content mb-0'>
+                    <div class='row mb-0'>
+                        <div class='col-6'>
+                            <a href='_verNegocio.php?id=<?php echo $row['_id']?>' class='btn btn-full btn-sm rounded-s font-600 font-13 bg-orange-dark'>VER NEGOCIO</a>
+                        <br></div>
+                    </div>
+               </div>
+        </div>               
+        <?php        
+            }
+        }else {
+            echo "<br>Resultados encontrados: Ninguno";
+        }
+    }
+        ?>
         
         <!-- Imagenes -->
         <div class="content mt-0 mb-0">
@@ -90,7 +157,8 @@ $query2 = "SELECT * FROM business WHERE typeOf ''";
                     while($row = mysqli_fetch_array($res2)){
                      ?>
                     <div class="splide__slide">
-                        <div class="card card-style ms-3" style="background-image:url(<?php echo $row['linkImage']?>);" data-card-height="300">
+                        <div class="card card-style ms-3" style="background-image:url(<?php echo $row['linkImage']?>);
+                        " data-card-height="300">
                             <div class="card-top px-3 py-3">
                                 <a href="#" data-menu="menu-heart" class="bg-white rounded-sm icon icon-xs float-end"></a>
                                 <a href="#" class="bg-white color-black rounded-sm btn btn-xs float-start font-700 font-12">$<?php echo $row['price']?>.00</a>
@@ -128,8 +196,9 @@ $query2 = "SELECT * FROM business WHERE typeOf ''";
                     <div class="splide__slide">
                         <div class="card m-2 card-style" data-card-height="250">
                             <img src="<?php echo $row['businessLogo']?>" style="                        
-                            max-width: 100%;                            
-                            height: auto;" class="">
+                            width: 100%;
+                            aspect-ratio: 3/3;
+                            object-fit: contain;" class="">
                             <div class="p-2 bg-theme rounded-sm">
                                 <div class="d-flex">
                                     <div>

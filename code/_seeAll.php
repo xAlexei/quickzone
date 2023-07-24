@@ -6,10 +6,7 @@ $conn = mysqli_connect($servername, $user, $pass, $database);
 $query = "SELECT * FROM business";
 $res = mysqli_query($conn, $query);
 
-
-
 ?>
-
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -61,7 +58,7 @@ $res = mysqli_query($conn, $query);
 
     <div id="menu-main" class="menu menu-box-left rounded-0" data-menu-width="280" data-menu-active="nav-welcome" data-menu-load="menu-main.html"></div>
     <div id="menu-share" class="menu menu-box-bottom rounded-m"  data-menu-load="menu-share.html" data-menu-height="370"> </div>
-    <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-load="menu-colors.html" data-menu-height="480"></div>
+    <div id="menu-colors" class="menu menu-box-bottom rounded-m" data-menu-load="menu-colors.html" data-menu-height="480"> Colors</div>
 
     <div class="page-content">
 
