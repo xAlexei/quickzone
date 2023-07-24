@@ -1,7 +1,7 @@
 <?php 
 session_start();
-$username = $_SESSION['username'];
-$id = $_SESSION['businessID'];
+$username = $_SESSION['username'] ?? null;
+$id = $_SESSION['businessID'] ?? null;
 ?>
 
 <div class="card rounded-0 bg-6" data-card-height="150" style="background-image: url('images/products/quickzone.png');">
@@ -56,12 +56,12 @@ $id = $_SESSION['businessID'];
 <h6 class="menu-divider mt-4">Settings</h6>
 <div class="list-group list-custom-small list-menu">
     <a href="#" data-menu="menu-colors">
-        <i class="fa fa-brush gradient-highlight color-white"></i>
+        <i class="fa fa-brush bg-orange-dark color-white"></i>
         <span>Highlights</span>
         <i class="fa fa-angle-right"></i>
     </a>
     <a href="#" data-toggle-theme="" data-trigger-switch="switch-dark-mode">
-        <i class="fa fa-moon gradient-dark color-white"></i>
+        <i class="fa fa-moon bg-orange-dark color-white"></i>
         <span>Dark Mode</span>
         <div class="custom-control small-switch ios-switch">
             <input data-toggle-theme type="checkbox" class="ios-input" id="toggle-dark-menu">
@@ -69,5 +69,5 @@ $id = $_SESSION['businessID'];
         </div>
     </a>
 </div>
-<h6 class="menu-divider mt-4">Contacts</h6>
+<h6 class="menu-divider mt-4">Compartir</h6>
 

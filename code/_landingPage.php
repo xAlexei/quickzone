@@ -1,8 +1,8 @@
 <?php
-
 session_start();
+
 if(!isset($_SESSION['username']) && !isset($_SESSION['businessID'])){
-    header("Location: _landingPage.php");
+    
 }else{
     $username = $_SESSION['username'];
     $id = $_SESSION['businessID'];
@@ -112,7 +112,7 @@ $res = mysqli_query($conn, $query) or die( mysqli_error($conn));
                         <p class="mb-0">Dirección: <?php echo $row['businessAddress']?></p>
                         <p class="mb-0">Télefono: <?php echo $row['phone']?></p>
                         <p class="mb-0">Correo Electronico: <?php echo $row['email']?></p>
-                        <p class="mb-0">WhatsApp<?php echo $row['whatsApp']?></p>
+                        <p class="mb-0">WhatsApp: <?php echo $row['whatsApp']?></p>
                      
                     </div>
                 </div>

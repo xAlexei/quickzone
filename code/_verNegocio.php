@@ -2,7 +2,7 @@
 
 session_start();
 if(!isset($_SESSION['username']) && !isset($_SESSION['businessID'])){
-    header("Location: _landingPage.php");
+    echo "";
 }else{
     $username = $_SESSION['username'];
 }
